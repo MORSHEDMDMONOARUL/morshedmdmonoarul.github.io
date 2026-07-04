@@ -5,10 +5,12 @@ const htmlPath = path.join(__dirname, "..", "index.html");
 const html = fs.readFileSync(htmlPath, "utf8");
 
 const requiredSnippets = [
-  "data-design=\"eu-research-candidate\"",
-  "EU Research Candidate Portfolio",
-  "AI &amp; Computer Vision Research Candidate",
-  "Scholarship Fit",
+  "data-design=\"international-research-portfolio\"",
+  "International Research Portfolio",
+  "AI &amp; Computer Vision Systems Builder",
+  "Graduate Funding &amp; Research Fit",
+  "funded graduate study",
+  "European research programs",
   "Research Agenda",
   "Evidence Dossier",
   "Academic Timeline",
@@ -32,6 +34,22 @@ const requiredSnippets = [
 ];
 
 const forbiddenSnippets = ["TBD", "TODO", "your-", "placeholder"];
+const forbiddenIdentitySnippets = [
+  "EU Research Candidate",
+  "AI &amp; Computer Vision Research Candidate",
+  "eu-research-candidate",
+  "morshed@eu-research",
+  "EU candidate",
+  "EU Candidate",
+  "Candidate file",
+  "Candidate research dossier",
+  "EU Research Direction",
+  "EU lab",
+  "EU scholarship",
+  "scholarship committees",
+  "scholarship reviewers",
+  "graduate reviewers",
+];
 
 const failures = [];
 
@@ -44,6 +62,12 @@ for (const snippet of requiredSnippets) {
 for (const snippet of forbiddenSnippets) {
   if (html.toLowerCase().includes(snippet.toLowerCase())) {
     failures.push(`Found forbidden placeholder text: ${snippet}`);
+  }
+}
+
+for (const snippet of forbiddenIdentitySnippets) {
+  if (html.includes(snippet)) {
+    failures.push(`Found direct candidate positioning: ${snippet}`);
   }
 }
 
