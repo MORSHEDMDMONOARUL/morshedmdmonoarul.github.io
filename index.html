@@ -5,43 +5,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Morshed Md Monoarul - Computer Science student at Sejong University, AI and Computer Vision Engineer, Python developer, and course teaching assistant with public GitHub work in AI tooling, exam proctoring, PDF learning tools, and inventory systems."
+      content="MD Monoarul Morshed - Computer Science student at Sejong University, AI and Computer Vision Engineer, Python Developer, Teaching Assistant, and builder of ExamShield, Prompt-Studio, PDF Quiz Generator, and inventory systems."
     />
-    <meta name="theme-color" content="#09090b" />
-    <meta property="og:title" content="Morshed Md Monoarul | Engineering Portfolio" />
+    <meta name="theme-color" content="#06080d" />
+    <meta property="og:title" content="MD Monoarul Morshed | Neural Research Lab" />
     <meta
       property="og:description"
-      content="AI tooling, computer vision, Python projects, and public GitHub portfolio for Morshed Md Monoarul."
+      content="AI, computer vision, object detection, agentic workflows, Python projects, and teaching work by MD Monoarul Morshed."
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://morshedmdmonoarul.github.io/" />
     <meta property="og:image" content="https://github.com/MORSHEDMDMONOARUL.png?size=320" />
     <link
       rel="icon"
-      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%2309090b'/%3E%3Cpath d='M14 22h36M14 32h24M14 42h30' stroke='%2322d3ee' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306080d'/%3E%3Ccircle cx='32' cy='32' r='16' fill='none' stroke='%2374f7c7' stroke-width='5'/%3E%3Ccircle cx='32' cy='32' r='5' fill='%238cc7ff'/%3E%3C/svg%3E"
     />
-    <title>Morshed Md Monoarul | Engineering Portfolio</title>
+    <title>MD Monoarul Morshed | Neural Research Lab</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
         theme: {
           extend: {
+            fontFamily: {
+              sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
+              mono: ["JetBrains Mono", "ui-monospace", "SFMono-Regular", "monospace"],
+            },
+            colors: {
+              lab: {
+                ink: "#06080d",
+                panel: "#0d1118",
+                line: "rgba(255,255,255,.12)",
+                mint: "#74f7c7",
+                cyan: "#8cc7ff",
+                amber: "#ffd166",
+                text: "#f7f7f4",
+              },
+            },
             boxShadow: {
-              glow: "0 0 40px rgba(34, 211, 238, 0.18)",
-              ember: "0 0 28px rgba(52, 211, 153, 0.18)",
+              aura: "0 28px 120px rgba(116, 247, 199, 0.18)",
+              blueaura: "0 28px 120px rgba(140, 199, 255, 0.16)",
             },
             animation: {
-              pulseSoft: "pulseSoft 2.4s ease-out infinite",
-              cursor: "cursor 1s steps(1) infinite",
+              orbit: "orbit 18s linear infinite",
+              pulseNode: "pulseNode 2.8s ease-in-out infinite",
+              scan: "scan 5s ease-in-out infinite",
             },
             keyframes: {
-              pulseSoft: {
-                "0%, 100%": { opacity: "1", transform: "scale(1)" },
-                "50%": { opacity: ".7", transform: "scale(.96)" },
+              orbit: {
+                from: { transform: "rotate(0deg)" },
+                to: { transform: "rotate(360deg)" },
               },
-              cursor: {
-                "0%, 49%": { opacity: "1" },
-                "50%, 100%": { opacity: "0" },
+              pulseNode: {
+                "0%, 100%": { opacity: ".55", transform: "scale(1)" },
+                "50%": { opacity: "1", transform: "scale(1.08)" },
+              },
+              scan: {
+                "0%, 100%": { transform: "translateY(-16%)", opacity: ".16" },
+                "50%": { transform: "translateY(78%)", opacity: ".34" },
               },
             },
           },
@@ -53,50 +73,138 @@
         color-scheme: dark;
       }
 
+      * {
+        box-sizing: border-box;
+      }
+
       body {
-        font-family:
-          ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
-          "Courier New", monospace;
+        min-height: 100dvh;
+        overflow-x: hidden;
         background:
-          radial-gradient(circle at 18% 12%, rgba(34, 211, 238, 0.12), transparent 28rem),
-          radial-gradient(circle at 84% 20%, rgba(52, 211, 153, 0.1), transparent 30rem),
-          #09090b;
+          radial-gradient(circle at 8% 8%, rgba(116, 247, 199, 0.16), transparent 30rem),
+          radial-gradient(circle at 78% 10%, rgba(140, 199, 255, 0.16), transparent 34rem),
+          linear-gradient(180deg, #06080d 0%, #090b12 44%, #06080d 100%);
+        color: #f7f7f4;
       }
 
-      .grid-accent {
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
         background-image:
-          linear-gradient(rgba(113, 113, 122, 0.12) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(113, 113, 122, 0.12) 1px, transparent 1px);
-        background-size: 44px 44px;
-        mask-image: linear-gradient(to bottom, black 0%, black 58%, transparent 100%);
+          linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+        background-size: 48px 48px;
+        mask-image: linear-gradient(to bottom, rgba(0, 0, 0, .9), rgba(0, 0, 0, .3), transparent);
       }
 
-      .scanline::before {
+      .noise {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        opacity: 0.21;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+        mix-blend-mode: soft-light;
+      }
+
+      .glass {
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: linear-gradient(180deg, rgba(255, 255, 255, .075), rgba(255, 255, 255, .035));
+        backdrop-filter: blur(18px);
+      }
+
+      .hero-shell {
+        position: relative;
+        isolation: isolate;
+      }
+
+      .hero-shell::after {
+        content: "";
+        position: absolute;
+        inset: auto 8% -1px;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(116, 247, 199, .48), rgba(140, 199, 255, .42), transparent);
+      }
+
+      .lab-visual {
+        min-height: 560px;
+        overflow: hidden;
+        background:
+          radial-gradient(circle at 50% 45%, rgba(116, 247, 199, .13), transparent 17rem),
+          linear-gradient(145deg, rgba(255, 255, 255, .075), rgba(255, 255, 255, .025));
+      }
+
+      .lab-visual::before {
         content: "";
         position: absolute;
         inset: 0;
-        pointer-events: none;
-        background: linear-gradient(
-          to bottom,
-          transparent,
-          rgba(255, 255, 255, 0.025),
-          transparent
-        );
-        background-size: 100% 8px;
+        background: linear-gradient(180deg, transparent, rgba(116, 247, 199, .18), transparent);
+        height: 42%;
+        animation: scan 5s ease-in-out infinite;
       }
 
-      .terminal-card {
-        background: linear-gradient(180deg, rgba(24, 24, 27, 0.92), rgba(9, 9, 11, 0.96));
-        border: 1px solid rgba(113, 113, 122, 0.28);
+      .orbit-ring {
+        position: absolute;
+        left: 50%;
+        top: 46%;
+        width: min(78vw, 520px);
+        aspect-ratio: 1;
+        border: 1px solid rgba(116, 247, 199, .34);
+        border-radius: 999px;
+        transform: translate(-50%, -50%);
       }
 
-      .terminal-card:hover {
-        border-color: rgba(34, 211, 238, 0.48);
+      .orbit-ring:nth-child(2) {
+        width: min(65vw, 430px);
+        border-style: dashed;
+        border-color: rgba(140, 199, 255, .36);
+        animation: orbit 18s linear infinite;
+      }
+
+      .orbit-ring:nth-child(3) {
+        width: min(48vw, 310px);
+        border-color: rgba(255, 209, 102, .28);
+        animation: orbit 24s linear infinite reverse;
+      }
+
+      .node {
+        position: absolute;
+        width: 11px;
+        height: 11px;
+        border-radius: 999px;
+        background: #74f7c7;
+        box-shadow: 0 0 28px rgba(116, 247, 199, .9);
+        animation: pulseNode 2.8s ease-in-out infinite;
+      }
+
+      .node.one { left: 16%; top: 28%; }
+      .node.two { right: 20%; top: 21%; animation-delay: .4s; background: #8cc7ff; }
+      .node.three { right: 14%; bottom: 26%; animation-delay: .9s; background: #ffd166; }
+      .node.four { left: 20%; bottom: 18%; animation-delay: 1.2s; }
+
+      .project-card {
+        min-height: 100%;
+        border: 1px solid rgba(255, 255, 255, .12);
+        background: linear-gradient(180deg, rgba(255, 255, 255, .066), rgba(255, 255, 255, .026));
+        transition: transform .22s ease, border-color .22s ease, background .22s ease;
+      }
+
+      .project-card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(116, 247, 199, .56);
+        background: linear-gradient(180deg, rgba(116, 247, 199, .09), rgba(255, 255, 255, .03));
       }
 
       .focus-ring:focus-visible {
-        outline: 2px solid #22d3ee;
+        outline: 2px solid #74f7c7;
         outline-offset: 4px;
+      }
+
+      @media (max-width: 640px) {
+        .lab-visual {
+          min-height: 460px;
+        }
       }
 
       @media (prefers-reduced-motion: reduce) {
@@ -111,433 +219,380 @@
       }
     </style>
   </head>
-  <body class="min-h-dvh overflow-x-hidden bg-zinc-950 text-zinc-100 antialiased">
+  <body class="font-sans antialiased" data-design="neural-research-lab">
+    <div class="noise" aria-hidden="true"></div>
     <a
       href="#main"
-      class="focus-ring fixed left-4 top-4 z-50 -translate-y-20 rounded-lg bg-cyan-300 px-4 py-3 text-sm font-bold text-zinc-950 transition focus:translate-y-0"
+      class="focus-ring fixed left-4 top-4 z-50 -translate-y-24 rounded-full bg-lab-mint px-4 py-3 text-sm font-black text-lab-ink transition focus:translate-y-0"
       >Skip to content</a
     >
 
-    <div class="grid-accent pointer-events-none fixed inset-0 opacity-70"></div>
-    <div class="pointer-events-none fixed inset-x-0 top-0 h-px bg-cyan-300/40"></div>
-
-    <header class="sticky top-0 z-40 border-b border-zinc-800/80 bg-zinc-950/86 backdrop-blur">
-      <nav
-        class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8"
-        aria-label="Primary navigation"
-      >
-        <a
-          href="#main"
-          class="focus-ring group inline-flex min-h-11 items-center rounded-lg border border-zinc-800 bg-zinc-900/70 px-3 text-sm font-semibold text-zinc-100 transition hover:border-cyan-300/70 hover:text-cyan-200"
-          aria-label="Morshed Md Monoarul home"
-        >
-          <span class="text-emerald-300">morshed@dev</span
-          ><span class="text-zinc-500">:</span><span class="text-cyan-300">~</span
-          ><span class="text-zinc-500">#</span>
-          <span class="ml-2 h-5 w-2 rounded-sm bg-cyan-300 animate-cursor"></span>
+    <header class="sticky top-0 z-40 border-b border-white/10 bg-lab-ink/78 backdrop-blur-xl">
+      <nav class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8" aria-label="Primary navigation">
+        <a href="#main" class="focus-ring flex min-h-11 items-center gap-3 rounded-full border border-white/10 bg-white/[.035] px-4 text-sm font-black text-lab-text">
+          <span class="h-2.5 w-2.5 rounded-full bg-lab-mint shadow-[0_0_20px_rgba(116,247,199,.85)]"></span>
+          Neural Research Lab
         </a>
-
-        <div class="hidden items-center gap-1 text-sm text-zinc-400 md:flex">
-          <a class="focus-ring rounded-lg px-3 py-2 transition hover:text-cyan-200" href="#research"
-            >research</a
-          >
-          <a class="focus-ring rounded-lg px-3 py-2 transition hover:text-cyan-200" href="#timeline"
-            >timeline</a
-          >
-          <a class="focus-ring rounded-lg px-3 py-2 transition hover:text-cyan-200" href="#contact"
-            >contact</a
-          >
+        <div class="hidden items-center gap-1 text-sm font-bold text-white/58 md:flex">
+          <a class="focus-ring rounded-full px-4 py-2 transition hover:bg-white/10 hover:text-white" href="#projects">Projects</a>
+          <a class="focus-ring rounded-full px-4 py-2 transition hover:bg-white/10 hover:text-white" href="#experience">Experience</a>
+          <a class="focus-ring rounded-full px-4 py-2 transition hover:bg-white/10 hover:text-white" href="#contact">Contact</a>
         </div>
       </nav>
     </header>
 
     <main id="main" class="relative z-10">
-      <section class="mx-auto grid min-h-[calc(100dvh-73px)] max-w-7xl items-center gap-10 px-4 py-12 sm:px-6 lg:grid-cols-[1.05fr_.95fr] lg:px-8 lg:py-16">
-        <div>
-          <div
-            class="mb-6 inline-flex items-center gap-3 rounded-lg border border-emerald-300/30 bg-emerald-300/10 px-3 py-2 text-sm font-semibold text-emerald-200 shadow-ember"
-            aria-label="Availability badge"
-          >
-            <span class="relative flex h-3 w-3" aria-hidden="true">
-              <span class="absolute inline-flex h-full w-full rounded-full bg-emerald-300 opacity-70 animate-ping"></span>
-              <span class="relative inline-flex h-3 w-3 rounded-full bg-emerald-300 animate-pulseSoft"></span>
-            </span>
-            Available for Cybersecurity &amp; AI Research
-          </div>
-
-          <p class="mb-4 text-sm uppercase tracking-[0.28em] text-cyan-200/80">
-            Computer Science &amp; Engineering
-          </p>
-          <h1 class="max-w-4xl text-balance text-4xl font-black leading-tight text-white sm:text-6xl lg:text-7xl">
-            Morshed Md Monoarul
-          </h1>
-          <p class="mt-6 max-w-3xl text-lg leading-8 text-zinc-300 sm:text-xl">
-            Computer Science student at Sejong University, AI &amp; Computer Vision Engineer,
-            Python developer, and Course Teaching Assistant for Advanced Programming Applications.
-            Public GitHub work spans AI prompt optimization, exam proctoring, PDF learning tools,
-            and inventory systems.
-          </p>
-
-          <div class="mt-8 flex flex-wrap gap-3" aria-label="Primary actions">
-            <a
-              class="focus-ring inline-flex min-h-12 items-center gap-3 rounded-lg bg-cyan-300 px-5 py-3 text-sm font-black text-zinc-950 shadow-glow transition hover:-translate-y-0.5 hover:bg-cyan-200"
-              href="https://github.com/MORSHEDMDMONOARUL"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <svg aria-hidden="true" viewBox="0 0 24 24" class="h-5 w-5 fill-current">
-                <path
-                  d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.29 9.4 7.86 10.93.58.1.79-.25.79-.56v-2.02c-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.56-.29-5.26-1.28-5.26-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.47.11-3.06 0 0 .98-.31 3.18 1.18A11.1 11.1 0 0 1 12 6.15c.98 0 1.96.13 2.88.39 2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.77.12 3.06.74.81 1.18 1.84 1.18 3.1 0 4.43-2.7 5.4-5.27 5.69.41.36.78 1.07.78 2.16v3c0 .31.21.67.8.56A11.52 11.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"
-                />
-              </svg>
-              View GitHub
-            </a>
-            <a
-              class="focus-ring inline-flex min-h-12 items-center gap-3 rounded-lg border border-zinc-700 bg-zinc-900 px-5 py-3 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:border-emerald-300/70 hover:text-emerald-200"
-              href="https://github.com/MORSHEDMDMONOARUL/Prompt-Studio"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Prompt-Studio
-              <svg aria-hidden="true" viewBox="0 0 24 24" class="h-4 w-4 fill-none stroke-current stroke-2">
-                <path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-            </a>
-            <a
-              class="focus-ring inline-flex min-h-12 items-center gap-3 rounded-lg border border-zinc-700 bg-zinc-900 px-5 py-3 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:border-amber-300/70 hover:text-amber-200"
-              href="mailto:monoarulmorshed@gmail.com"
-            >
-              Email Me
-              <svg aria-hidden="true" viewBox="0 0 24 24" class="h-4 w-4 fill-none stroke-current stroke-2">
-                <path d="M4 6h16v12H4z" stroke-linejoin="round" />
-                <path d="m4 7 8 6 8-6" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-            </a>
-            <a
-              class="focus-ring inline-flex min-h-12 items-center gap-3 rounded-lg border border-zinc-700 bg-zinc-900 px-5 py-3 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:border-sky-300/70 hover:text-sky-200"
-              href="https://www.linkedin.com/in/md-monoarul-morshed-6a07a6263"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              LinkedIn
-              <svg aria-hidden="true" viewBox="0 0 24 24" class="h-4 w-4 fill-none stroke-current stroke-2">
-                <path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-            </a>
-          </div>
-        </div>
-
-        <aside class="terminal-card scanline relative overflow-hidden rounded-lg p-5 shadow-glow" aria-label="Engineering profile card">
-          <div class="mb-5 flex items-center justify-between border-b border-zinc-800 pb-4">
-            <div class="flex gap-2" aria-hidden="true">
-              <span class="h-3 w-3 rounded-full bg-red-400"></span>
-              <span class="h-3 w-3 rounded-full bg-amber-300"></span>
-              <span class="h-3 w-3 rounded-full bg-emerald-300"></span>
+      <section class="hero-shell px-4 pt-12 sm:px-6 lg:px-8">
+        <div class="mx-auto grid max-w-7xl items-center gap-8 lg:grid-cols-[1.02fr_.98fr]">
+          <div class="pb-10 lg:pb-16">
+            <div class="mb-6 inline-flex items-center gap-3 rounded-full border border-lab-mint/30 bg-lab-mint/10 px-4 py-2 text-sm font-black text-lab-mint shadow-aura">
+              <span class="h-2.5 w-2.5 rounded-full bg-lab-mint shadow-[0_0_22px_rgba(116,247,199,.95)]"></span>
+              Open to AI/ML and computer vision collaborations
             </div>
-            <p class="text-xs text-zinc-500">profile.sh</p>
-          </div>
-
-          <div class="grid gap-5 sm:grid-cols-[auto_1fr] sm:items-center">
-            <img
-              src="https://github.com/MORSHEDMDMONOARUL.png?size=320"
-              width="160"
-              height="160"
-              alt="GitHub avatar for Morshed Md Monoarul"
-              class="h-36 w-36 rounded-lg border border-cyan-300/30 bg-zinc-900 object-cover shadow-glow"
-            />
-            <div class="space-y-3 text-sm leading-7 text-zinc-300">
-              <p><span class="text-emerald-300">role</span> = "AI &amp; Computer Vision Engineer"</p>
-              <p><span class="text-cyan-300">school</span> = "Sejong University"</p>
-              <p><span class="text-amber-300">stack</span> = ["Python", "YOLOv8", "NVIDIA NIM", "PHP", "Java"]</p>
-              <p><span class="text-sky-300">experience</span> = "Tampaco Foils Ltd."</p>
-            </div>
-          </div>
-
-          <div class="mt-6 grid grid-cols-3 gap-3 text-center">
-            <div class="rounded-lg border border-zinc-800 bg-zinc-950/70 p-3">
-              <p class="text-2xl font-black text-cyan-200">6</p>
-              <p class="mt-1 text-xs text-zinc-500">public repos</p>
-            </div>
-            <div class="rounded-lg border border-zinc-800 bg-zinc-950/70 p-3">
-              <p class="text-2xl font-black text-emerald-200">Py</p>
-              <p class="mt-1 text-xs text-zinc-500">main stack</p>
-            </div>
-            <div class="rounded-lg border border-zinc-800 bg-zinc-950/70 p-3">
-              <p class="text-2xl font-black text-amber-200">CV</p>
-              <p class="mt-1 text-xs text-zinc-500">YOLOv8 + IoT</p>
-            </div>
-          </div>
-        </aside>
-      </section>
-
-      <section id="research" class="border-y border-zinc-900 bg-zinc-950/76 py-16 sm:py-20">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div class="mb-10 max-w-3xl">
-            <p class="text-sm uppercase tracking-[0.28em] text-emerald-200/80">Research blocks</p>
-            <h2 class="mt-3 text-3xl font-black text-white sm:text-4xl">Engineering workbench</h2>
-            <p class="mt-4 leading-7 text-zinc-400">
-              Focused areas mapped from live GitHub work: prompt optimization, computer vision
-              proctoring, document intelligence, and operational inventory systems.
+            <p class="font-mono text-xs font-black uppercase tracking-[0.32em] text-lab-cyan/86">
+              CS Student at Sejong University / AI &amp; Computer Vision Engineer / Python Developer
             </p>
-          </div>
-
-          <div class="grid gap-4 lg:grid-cols-3">
-            <article class="terminal-card rounded-lg p-6 transition duration-200 hover:-translate-y-1">
-              <div class="mb-5 flex h-11 w-11 items-center justify-center rounded-lg border border-cyan-300/30 bg-cyan-300/10 text-cyan-200">
-                <svg aria-hidden="true" viewBox="0 0 24 24" class="h-6 w-6 fill-none stroke-current stroke-2">
-                  <path d="M9 3h6v3H9zM7 6h10v4H7zM5 10h14v11H5z" stroke-linejoin="round" />
-                  <path d="M9 14h6M9 17h4" stroke-linecap="round" />
-                </svg>
-              </div>
-              <h3 class="text-xl font-black text-white">AI prompt optimization</h3>
-              <p class="mt-4 leading-7 text-zinc-400">
-                Prompt-Studio turns rough project ideas into token-saving, implementation-ready
-                specifications for coding assistants using a Python backend, vanilla JavaScript,
-                and NVIDIA NIM.
-              </p>
-              <dl class="mt-6 grid gap-3 text-sm">
-                <div class="flex justify-between gap-3 border-t border-zinc-800 pt-3">
-                  <dt class="text-zinc-500">repo</dt>
-                  <dd class="text-cyan-200">Prompt-Studio</dd>
-                </div>
-                <div class="flex justify-between gap-3 border-t border-zinc-800 pt-3">
-                  <dt class="text-zinc-500">tooling</dt>
-                  <dd class="text-cyan-200">Python / NIM</dd>
-                </div>
-              </dl>
-            </article>
-
-            <article class="terminal-card rounded-lg p-6 transition duration-200 hover:-translate-y-1">
-              <div class="mb-5 flex h-11 w-11 items-center justify-center rounded-lg border border-emerald-300/30 bg-emerald-300/10 text-emerald-200">
-                <svg aria-hidden="true" viewBox="0 0 24 24" class="h-6 w-6 fill-none stroke-current stroke-2">
-                  <path d="M4 6h16v12H4z" stroke-linejoin="round" />
-                  <path d="m8 10-2 2 2 2M16 10l2 2-2 2M13 9l-2 6" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-              </div>
-              <h3 class="text-xl font-black text-white">Computer vision proctoring</h3>
-              <p class="mt-4 leading-7 text-zinc-400">
-                ExamShield combines YOLOv8 object detection, ESP32 IoT support, multi-camera
-                monitoring, and academic-integrity workflows for AI-powered exam proctoring.
-              </p>
-              <dl class="mt-6 grid gap-3 text-sm">
-                <div class="flex justify-between gap-3 border-t border-zinc-800 pt-3">
-                  <dt class="text-zinc-500">repo</dt>
-                  <dd class="text-emerald-200">ExamShield</dd>
-                </div>
-                <div class="flex justify-between gap-3 border-t border-zinc-800 pt-3">
-                  <dt class="text-zinc-500">focus</dt>
-                  <dd class="text-emerald-200">YOLOv8 / ESP32</dd>
-                </div>
-              </dl>
-            </article>
-
-            <article class="terminal-card rounded-lg p-6 transition duration-200 hover:-translate-y-1">
-              <div class="mb-5 flex h-11 w-11 items-center justify-center rounded-lg border border-amber-300/30 bg-amber-300/10 text-amber-200">
-                <svg aria-hidden="true" viewBox="0 0 24 24" class="h-6 w-6 fill-none stroke-current stroke-2">
-                  <path d="M12 3 5 6v5c0 4.5 3 8 7 10 4-2 7-5.5 7-10V6z" stroke-linejoin="round" />
-                  <path d="M9 12h6M12 9v6" stroke-linecap="round" />
-                </svg>
-              </div>
-              <h3 class="text-xl font-black text-white">Learning and operations tools</h3>
-              <p class="mt-4 leading-7 text-zinc-400">
-                PDF Quiz Generator extracts, summarizes, and asks questions over PDFs, while
-                SJ MART projects show inventory dashboards, authentication, Swing GUI, and SQLite
-                data handling.
-              </p>
-              <dl class="mt-6 grid gap-3 text-sm">
-                <div class="flex justify-between gap-3 border-t border-zinc-800 pt-3">
-                  <dt class="text-zinc-500">repos</dt>
-                  <dd class="text-amber-200">PDF / SJ MART</dd>
-                </div>
-                <div class="flex justify-between gap-3 border-t border-zinc-800 pt-3">
-                  <dt class="text-zinc-500">stack</dt>
-                  <dd class="text-amber-200">Python / PHP / Java</dd>
-                </div>
-              </dl>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section id="timeline" class="py-16 sm:py-20">
-        <div class="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[.8fr_1.2fr] lg:px-8">
-          <div>
-            <p class="text-sm uppercase tracking-[0.28em] text-cyan-200/80">Timeline</p>
-            <h2 class="mt-3 text-3xl font-black text-white sm:text-4xl">Current trajectory</h2>
-            <p class="mt-4 leading-7 text-zinc-400">
-              A public profile path centered on Sejong University, Advanced Programming
-              Applications, AI/computer vision engineering, and Python-first project work.
+            <h1 class="mt-5 max-w-5xl text-5xl font-black leading-[0.88] tracking-[-0.055em] text-lab-text sm:text-7xl lg:text-8xl">
+              MD Monoarul Morshed
+            </h1>
+            <p class="mt-7 max-w-2xl text-lg leading-8 text-white/72 sm:text-xl">
+              I build practical AI systems around object detection, agentic workflows, and Python
+              applications. My work connects YOLOv8, Flask, ESP32, Raspberry Pi edge deployment,
+              and teaching practice into useful engineering outcomes.
             </p>
-          </div>
-
-          <div class="space-y-4">
-            <article class="terminal-card rounded-lg p-6">
-              <div class="flex flex-wrap items-center justify-between gap-3">
-                <h3 class="text-xl font-black text-white">Course Teaching Assistant</h3>
-                <span class="rounded-lg border border-emerald-300/30 bg-emerald-300/10 px-3 py-1 text-sm font-bold text-emerald-200"
-                  >Active</span
-                >
-              </div>
-              <p class="mt-2 text-cyan-200">Advanced Programming Applications</p>
-              <p class="mt-4 leading-7 text-zinc-400">
-                Supporting students through applied programming concepts, implementation discipline,
-                debugging habits, and stronger engineering communication.
-              </p>
-            </article>
-
-            <article class="terminal-card rounded-lg p-6">
-              <div class="flex flex-wrap items-center justify-between gap-3">
-                <h3 class="text-xl font-black text-white">Computer Science Student</h3>
-                <span class="rounded-lg border border-cyan-300/30 bg-cyan-300/10 px-3 py-1 text-sm font-bold text-cyan-200"
-                  >In progress</span
-                >
-              </div>
-              <p class="mt-2 text-emerald-200">Sejong University</p>
-              <p class="mt-4 leading-7 text-zinc-400">
-                Building a foundation across algorithms, Python tooling, AI systems, computer
-                vision, and practical software projects.
-              </p>
-            </article>
-
-            <article class="terminal-card rounded-lg p-6">
-              <div class="flex flex-wrap items-center justify-between gap-3">
-                <h3 class="text-xl font-black text-white">AI &amp; Computer Vision Engineer</h3>
-                <span class="rounded-lg border border-amber-300/30 bg-amber-300/10 px-3 py-1 text-sm font-bold text-amber-200"
-                  >LinkedIn</span
-                >
-              </div>
-              <p class="mt-2 text-amber-200">Python-focused profile with Tampaco Foils Ltd. listed</p>
-              <p class="mt-4 leading-7 text-zinc-400">
-                Public profile positioning aligns with GitHub work in Prompt-Studio and ExamShield:
-                AI tooling, computer vision, and practical engineering systems.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section id="projects" class="border-y border-zinc-900 bg-zinc-950/76 py-16 sm:py-20">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div class="mb-10 max-w-3xl">
-            <p class="text-sm uppercase tracking-[0.28em] text-amber-200/80">Selected projects</p>
-            <h2 class="mt-3 text-3xl font-black text-white sm:text-4xl">Public build log</h2>
-          </div>
-
-          <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-            <a
-              class="focus-ring terminal-card group rounded-lg p-6 transition duration-200 hover:-translate-y-1"
-              href="https://github.com/MORSHEDMDMONOARUL/Prompt-Studio"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <span class="text-sm font-bold text-cyan-200">AI tooling</span>
-              <h3 class="mt-3 text-xl font-black text-white group-hover:text-cyan-100">Prompt Studio</h3>
-              <p class="mt-4 leading-7 text-zinc-400">
-                AI prompt optimization engine that turns rough project ideas into professional,
-                token-saving specs for AI coding assistants.
-              </p>
-            </a>
-
-            <a
-              class="focus-ring terminal-card group rounded-lg p-6 transition duration-200 hover:-translate-y-1"
-              href="https://github.com/MORSHEDMDMONOARUL/ExamShield"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <span class="text-sm font-bold text-emerald-200">Security + AI</span>
-              <h3 class="mt-3 text-xl font-black text-white group-hover:text-emerald-100">ExamShield</h3>
-              <p class="mt-4 leading-7 text-zinc-400">
-                AI-powered exam proctoring system using YOLOv8, ESP32 IoT, multi-camera support,
-                and object-detection workflows.
-              </p>
-            </a>
-
-            <a
-              class="focus-ring terminal-card group rounded-lg p-6 transition duration-200 hover:-translate-y-1"
-              href="https://github.com/MORSHEDMDMONOARUL/PDF_Quiz_Generator"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <span class="text-sm font-bold text-amber-200">Learning systems</span>
-              <h3 class="mt-3 text-xl font-black text-white group-hover:text-amber-100">PDF Quiz Generator</h3>
-              <p class="mt-4 leading-7 text-zinc-400">
-                Interactive PDF tool for extraction, summaries, short questions with answers,
-                and chat-based study workflows.
-              </p>
-            </a>
-
-            <a
-              class="focus-ring terminal-card group rounded-lg p-6 transition duration-200 hover:-translate-y-1"
-              href="https://github.com/MORSHEDMDMONOARUL/SJ_MART"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <span class="text-sm font-bold text-sky-200">Inventory system</span>
-              <h3 class="mt-3 text-xl font-black text-white group-hover:text-sky-100">SJ MART</h3>
-              <p class="mt-4 leading-7 text-zinc-400">
-                PHP inventory management system with product, category, customer, order,
-                dashboard, and secure authentication flows.
-              </p>
-            </a>
-
-            <a
-              class="focus-ring terminal-card group rounded-lg p-6 transition duration-200 hover:-translate-y-1"
-              href="https://github.com/MORSHEDMDMONOARUL/SJ_MART_MORSHED"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <span class="text-sm font-bold text-fuchsia-200">Java desktop</span>
-              <h3 class="mt-3 text-xl font-black text-white group-hover:text-fuchsia-100">SJ MART Morshed</h3>
-              <p class="mt-4 leading-7 text-zinc-400">
-                Java Swing and SQLite inventory system for product, category, sales,
-                and stock-management workflows.
-              </p>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <section id="contact" class="py-16 sm:py-20">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div class="terminal-card grid gap-8 rounded-lg p-6 sm:p-8 lg:grid-cols-[1.1fr_.9fr] lg:items-center">
-            <div>
-              <p class="text-sm uppercase tracking-[0.28em] text-emerald-200/80">Contact</p>
-              <h2 class="mt-3 text-3xl font-black text-white sm:text-4xl">Build, research, review.</h2>
-              <p class="mt-4 max-w-2xl leading-7 text-zinc-400">
-                Reach out for AI tooling, computer vision, Python projects, cybersecurity,
-                or teaching-assistant collaboration.
-              </p>
-            </div>
-
-            <div class="flex flex-col gap-3 sm:flex-row lg:justify-end">
+            <div class="mt-8 flex flex-wrap gap-3" aria-label="Primary actions">
               <a
-                class="focus-ring inline-flex min-h-12 items-center justify-center gap-3 rounded-lg bg-emerald-300 px-5 py-3 text-sm font-black text-zinc-950 transition hover:-translate-y-0.5 hover:bg-emerald-200"
-                href="mailto:monoarulmorshed@gmail.com"
-                >monoarulmorshed@gmail.com</a
-              >
-              <a
-                class="focus-ring inline-flex min-h-12 items-center justify-center gap-3 rounded-lg border border-zinc-700 bg-zinc-900 px-5 py-3 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:border-sky-300/70 hover:text-sky-200"
-                href="https://www.linkedin.com/in/md-monoarul-morshed-6a07a6263"
+                class="focus-ring inline-flex min-h-12 items-center justify-center gap-3 rounded-full bg-lab-mint px-5 py-3 text-sm font-black text-lab-ink shadow-aura transition hover:-translate-y-0.5 hover:bg-white"
+                href="https://github.com/MORSHEDMDMONOARUL/ExamShield"
                 target="_blank"
                 rel="noopener noreferrer"
-                >LinkedIn</a
               >
+                View ExamShield
+                <svg aria-hidden="true" viewBox="0 0 24 24" class="h-4 w-4 fill-none stroke-current stroke-2">
+                  <path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </a>
+              <a
+                class="focus-ring inline-flex min-h-12 items-center justify-center gap-3 rounded-full border border-white/12 bg-white/[.045] px-5 py-3 text-sm font-black text-white transition hover:-translate-y-0.5 hover:border-lab-cyan/60 hover:bg-lab-cyan/10"
+                href="https://github.com/MORSHEDMDMONOARUL"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                GitHub Lab
+              </a>
+              <a
+                class="focus-ring inline-flex min-h-12 items-center justify-center gap-3 rounded-full border border-white/12 bg-white/[.045] px-5 py-3 text-sm font-black text-white transition hover:-translate-y-0.5 hover:border-lab-amber/60 hover:bg-lab-amber/10"
+                href="mailto:morshedmdmonoarul@gmail.com"
+              >
+                Email
+              </a>
+            </div>
+          </div>
+
+          <aside class="lab-visual glass relative rounded-[2rem] p-5 shadow-blueaura" aria-label="Neural lab visual summary">
+            <div class="orbit-ring" aria-hidden="true"></div>
+            <div class="orbit-ring" aria-hidden="true"></div>
+            <div class="orbit-ring" aria-hidden="true"></div>
+            <span class="node one" aria-hidden="true"></span>
+            <span class="node two" aria-hidden="true"></span>
+            <span class="node three" aria-hidden="true"></span>
+            <span class="node four" aria-hidden="true"></span>
+
+            <div class="relative z-10 flex h-full min-h-[500px] flex-col justify-between">
+              <div class="flex items-start justify-between gap-4">
+                <div>
+                  <p class="font-mono text-xs font-black uppercase tracking-[0.24em] text-white/50">Featured system</p>
+                  <h2 class="mt-3 text-3xl font-black tracking-[-0.04em] text-white sm:text-4xl">ExamShield</h2>
+                </div>
+                <img
+                  src="https://github.com/MORSHEDMDMONOARUL.png?size=240"
+                  width="96"
+                  height="96"
+                  alt="GitHub avatar for MD Monoarul Morshed"
+                  class="h-20 w-20 rounded-3xl border border-white/15 bg-white/10 object-cover"
+                />
+              </div>
+
+              <div class="mx-auto w-full max-w-sm rounded-[1.6rem] border border-white/12 bg-lab-ink/72 p-5 shadow-aura">
+                <p class="text-sm font-bold leading-6 text-white/74">
+                  AI-powered exam proctoring system using real-time object detection to identify
+                  phones, earphones, and smartwatches across large exam environments.
+                </p>
+                <div class="mt-5 grid grid-cols-3 gap-2 text-center">
+                  <div class="rounded-2xl border border-white/10 bg-white/[.045] p-3">
+                    <p class="text-2xl font-black text-lab-mint">16</p>
+                    <p class="mt-1 text-[11px] font-bold text-white/46">cameras</p>
+                  </div>
+                  <div class="rounded-2xl border border-white/10 bg-white/[.045] p-3">
+                    <p class="text-2xl font-black text-lab-cyan">Pi</p>
+                    <p class="mt-1 text-[11px] font-bold text-white/46">edge</p>
+                  </div>
+                  <div class="rounded-2xl border border-white/10 bg-white/[.045] p-3">
+                    <p class="text-2xl font-black text-lab-amber">IoT</p>
+                    <p class="mt-1 text-[11px] font-bold text-white/46">ESP32</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-3 text-sm">
+                <div class="rounded-3xl border border-white/10 bg-white/[.04] p-4">
+                  <p class="font-mono text-[11px] uppercase tracking-[0.22em] text-lab-mint">Top skills</p>
+                  <p class="mt-2 font-black text-white">Agentic workflows / Object detection / Computer vision</p>
+                </div>
+                <div class="rounded-3xl border border-white/10 bg-white/[.04] p-4">
+                  <p class="font-mono text-[11px] uppercase tracking-[0.22em] text-lab-cyan">Tools</p>
+                  <p class="mt-2 font-black text-white">Python / YOLOv8 / OpenCV / Flask / Roboflow</p>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="px-4 py-16 sm:px-6 lg:px-8" aria-labelledby="signal-heading">
+        <div class="mx-auto grid max-w-7xl gap-4 md:grid-cols-4">
+          <div class="glass rounded-3xl p-5">
+            <p class="font-mono text-xs font-black uppercase tracking-[0.22em] text-white/45">Status</p>
+            <p class="mt-3 text-2xl font-black text-lab-mint">Teaching Assistant</p>
+            <p class="mt-2 text-sm leading-6 text-white/62">Sejong University, March 2026 - Present</p>
+          </div>
+          <div class="glass rounded-3xl p-5">
+            <p class="font-mono text-xs font-black uppercase tracking-[0.22em] text-white/45">Education</p>
+            <p class="mt-3 text-2xl font-black text-lab-cyan">B.S. CSE</p>
+            <p class="mt-2 text-sm leading-6 text-white/62">Sejong University, March 2022 - March 2026</p>
+          </div>
+          <div class="glass rounded-3xl p-5">
+            <p class="font-mono text-xs font-black uppercase tracking-[0.22em] text-white/45">Experience</p>
+            <p class="mt-3 text-2xl font-black text-lab-amber">Server Manager</p>
+            <p class="mt-2 text-sm leading-6 text-white/62">Tampaco Foils Ltd., May 2019 - July 2021</p>
+          </div>
+          <div class="glass rounded-3xl p-5">
+            <p class="font-mono text-xs font-black uppercase tracking-[0.22em] text-white/45">Repo signal</p>
+            <p class="mt-3 text-2xl font-black text-white">6 public repos</p>
+            <p class="mt-2 text-sm leading-6 text-white/62">AI tools, PDF learning, inventory systems</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="border-y border-white/10 bg-white/[.018] px-4 py-20 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-7xl">
+          <div class="max-w-3xl">
+            <p class="font-mono text-xs font-black uppercase tracking-[0.3em] text-lab-mint">Project systems</p>
+            <h2 class="mt-4 text-4xl font-black tracking-[-0.045em] text-white sm:text-6xl">Built like experiments. Shipped like tools.</h2>
+            <p class="mt-5 text-lg leading-8 text-white/64">
+              The strongest portfolio story is not a list of repositories. It is a chain of systems:
+              detection, orchestration, document intelligence, and operational software.
+            </p>
+          </div>
+
+          <div class="mt-10 grid gap-4 lg:grid-cols-3">
+            <a class="project-card focus-ring rounded-[1.75rem] p-6" href="https://github.com/MORSHEDMDMONOARUL/ExamShield" target="_blank" rel="noopener noreferrer">
+              <div class="flex items-start justify-between gap-4">
+                <p class="font-mono text-xs font-black uppercase tracking-[0.22em] text-lab-mint">Featured / AI CV</p>
+                <span class="rounded-full border border-lab-mint/30 bg-lab-mint/10 px-3 py-1 text-xs font-black text-lab-mint">Python</span>
+              </div>
+              <h3 class="mt-5 text-3xl font-black tracking-[-0.035em] text-white">ExamShield</h3>
+              <p class="mt-4 leading-7 text-white/66">
+                AI-powered exam proctoring system with YOLOv8, OpenCV, Flask dashboard, Roboflow,
+                ESP32 BLE/WiFi device detection, multi-camera support up to 16 cameras, and
+                Raspberry Pi edge deployment.
+              </p>
+              <div class="mt-6 grid grid-cols-3 gap-2 text-center">
+                <span class="rounded-2xl bg-white/[.045] px-2 py-3 text-xs font-black text-white/72">YOLOv8</span>
+                <span class="rounded-2xl bg-white/[.045] px-2 py-3 text-xs font-black text-white/72">ESP32</span>
+                <span class="rounded-2xl bg-white/[.045] px-2 py-3 text-xs font-black text-white/72">Flask</span>
+              </div>
+            </a>
+
+            <a class="project-card focus-ring rounded-[1.75rem] p-6" href="https://github.com/MORSHEDMDMONOARUL/Prompt-Studio" target="_blank" rel="noopener noreferrer">
+              <div class="flex items-start justify-between gap-4">
+                <p class="font-mono text-xs font-black uppercase tracking-[0.22em] text-lab-cyan">Agentic workflow</p>
+                <span class="rounded-full border border-lab-cyan/30 bg-lab-cyan/10 px-3 py-1 text-xs font-black text-lab-cyan">NIM</span>
+              </div>
+              <h3 class="mt-5 text-3xl font-black tracking-[-0.035em] text-white">Prompt-Studio</h3>
+              <p class="mt-4 leading-7 text-white/66">
+                A lightweight AI prompt optimization engine that turns rough project ideas into
+                professional, token-saving, implementation-ready specs for AI coding assistants.
+              </p>
+              <div class="mt-6 grid grid-cols-3 gap-2 text-center">
+                <span class="rounded-2xl bg-white/[.045] px-2 py-3 text-xs font-black text-white/72">Python</span>
+                <span class="rounded-2xl bg-white/[.045] px-2 py-3 text-xs font-black text-white/72">Vanilla JS</span>
+                <span class="rounded-2xl bg-white/[.045] px-2 py-3 text-xs font-black text-white/72">NVIDIA NIM</span>
+              </div>
+            </a>
+
+            <a class="project-card focus-ring rounded-[1.75rem] p-6" href="https://github.com/MORSHEDMDMONOARUL/PDF_Quiz_Generator" target="_blank" rel="noopener noreferrer">
+              <div class="flex items-start justify-between gap-4">
+                <p class="font-mono text-xs font-black uppercase tracking-[0.22em] text-lab-amber">Learning AI</p>
+                <span class="rounded-full border border-lab-amber/30 bg-lab-amber/10 px-3 py-1 text-xs font-black text-lab-amber">PDF</span>
+              </div>
+              <h3 class="mt-5 text-3xl font-black tracking-[-0.035em] text-white">PDF Quiz Generator</h3>
+              <p class="mt-4 leading-7 text-white/66">
+                AI-powered study tool for extracting summaries and generating short questions with
+                answers from PDF files, with a dynamic chat interface for document learning.
+              </p>
+              <div class="mt-6 grid grid-cols-3 gap-2 text-center">
+                <span class="rounded-2xl bg-white/[.045] px-2 py-3 text-xs font-black text-white/72">Summaries</span>
+                <span class="rounded-2xl bg-white/[.045] px-2 py-3 text-xs font-black text-white/72">Questions</span>
+                <span class="rounded-2xl bg-white/[.045] px-2 py-3 text-xs font-black text-white/72">Chat</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="mt-4 grid gap-4 md:grid-cols-2">
+            <a class="project-card focus-ring rounded-[1.75rem] p-6" href="https://github.com/MORSHEDMDMONOARUL/SJ_MART" target="_blank" rel="noopener noreferrer">
+              <p class="font-mono text-xs font-black uppercase tracking-[0.22em] text-lab-cyan">Operations software</p>
+              <h3 class="mt-4 text-2xl font-black tracking-[-0.035em] text-white">SJ MART</h3>
+              <p class="mt-4 leading-7 text-white/66">
+                Inventory management system with PHP dashboard, secure authentication, and product,
+                category, customer, and order management.
+              </p>
+            </a>
+            <a class="project-card focus-ring rounded-[1.75rem] p-6" href="https://github.com/MORSHEDMDMONOARUL/SJ_MART_MORSHED" target="_blank" rel="noopener noreferrer">
+              <p class="font-mono text-xs font-black uppercase tracking-[0.22em] text-lab-amber">Desktop system</p>
+              <h3 class="mt-4 text-2xl font-black tracking-[-0.035em] text-white">Java Inventory System</h3>
+              <p class="mt-4 leading-7 text-white/66">
+                Java Swing and SQLite desktop application for product, category, sales, and
+                stock-management workflows.
+              </p>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section id="experience" class="px-4 py-20 sm:px-6 lg:px-8">
+        <div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[.82fr_1.18fr]">
+          <div>
+            <p class="font-mono text-xs font-black uppercase tracking-[0.3em] text-lab-cyan">Profile signal</p>
+            <h2 class="mt-4 text-4xl font-black tracking-[-0.045em] text-white sm:text-6xl">From server rooms to vision systems.</h2>
+            <p class="mt-5 text-lg leading-8 text-white/64">
+              The LinkedIn profile reads like an engineer moving upward through infrastructure,
+              teaching, and applied AI. The site should make that arc obvious fast.
+            </p>
+            <div class="mt-8 flex flex-wrap gap-2">
+              <span class="rounded-full border border-white/10 bg-white/[.045] px-4 py-2 text-sm font-black text-white/70">Agentic Workflows</span>
+              <span class="rounded-full border border-white/10 bg-white/[.045] px-4 py-2 text-sm font-black text-white/70">Object Detection</span>
+              <span class="rounded-full border border-white/10 bg-white/[.045] px-4 py-2 text-sm font-black text-white/70">Computer Vision</span>
+              <span class="rounded-full border border-white/10 bg-white/[.045] px-4 py-2 text-sm font-black text-white/70">Python</span>
+              <span class="rounded-full border border-white/10 bg-white/[.045] px-4 py-2 text-sm font-black text-white/70">TensorFlow</span>
+              <span class="rounded-full border border-white/10 bg-white/[.045] px-4 py-2 text-sm font-black text-white/70">SQLite / MySQL</span>
+            </div>
+          </div>
+
+          <div class="relative">
+            <div class="absolute bottom-8 left-5 top-8 w-px bg-gradient-to-b from-lab-mint via-lab-cyan to-lab-amber"></div>
+            <div class="space-y-4">
+              <article class="glass relative rounded-[1.75rem] p-6 pl-12">
+                <span class="absolute left-[14px] top-8 h-4 w-4 rounded-full border-4 border-lab-ink bg-lab-mint shadow-[0_0_22px_rgba(116,247,199,.85)]"></span>
+                <div class="flex flex-wrap items-center justify-between gap-3">
+                  <h3 class="text-2xl font-black tracking-[-0.03em] text-white">Teaching Assistant</h3>
+                  <span class="rounded-full border border-lab-mint/30 bg-lab-mint/10 px-3 py-1 text-sm font-black text-lab-mint">March 2026 - Present</span>
+                </div>
+                <p class="mt-2 font-bold text-lab-cyan">Sejong University, 209 Neungdong-ro, Gwangjin-gu, Seoul</p>
+                <p class="mt-4 leading-7 text-white/65">
+                  Supporting Advanced Programming Applications with applied programming guidance,
+                  debugging discipline, and student-facing engineering communication.
+                </p>
+              </article>
+
+              <article class="glass relative rounded-[1.75rem] p-6 pl-12">
+                <span class="absolute left-[14px] top-8 h-4 w-4 rounded-full border-4 border-lab-ink bg-lab-cyan shadow-[0_0_22px_rgba(140,199,255,.85)]"></span>
+                <div class="flex flex-wrap items-center justify-between gap-3">
+                  <h3 class="text-2xl font-black tracking-[-0.03em] text-white">B.S. Computer Science &amp; Engineering</h3>
+                  <span class="rounded-full border border-lab-cyan/30 bg-lab-cyan/10 px-3 py-1 text-sm font-black text-lab-cyan">March 2022 - March 2026</span>
+                </div>
+                <p class="mt-2 font-bold text-lab-mint">Sejong University</p>
+                <p class="mt-4 leading-7 text-white/65">
+                  Computer Science track focused on artificial intelligence, computer vision, machine
+                  learning, and practical software systems.
+                </p>
+              </article>
+
+              <article class="glass relative rounded-[1.75rem] p-6 pl-12">
+                <span class="absolute left-[14px] top-8 h-4 w-4 rounded-full border-4 border-lab-ink bg-lab-amber shadow-[0_0_22px_rgba(255,209,102,.8)]"></span>
+                <div class="flex flex-wrap items-center justify-between gap-3">
+                  <h3 class="text-2xl font-black tracking-[-0.03em] text-white">Server Manager</h3>
+                  <span class="rounded-full border border-lab-amber/30 bg-lab-amber/10 px-3 py-1 text-sm font-black text-lab-amber">May 2019 - July 2021</span>
+                </div>
+                <p class="mt-2 font-bold text-lab-amber">Tampaco Foils Ltd., Dhaka, Bangladesh</p>
+                <p class="mt-4 leading-7 text-white/65">
+                  Managed enterprise server infrastructure, system administration, security protocols,
+                  and network operations.
+                </p>
+              </article>
+
+              <article class="glass relative rounded-[1.75rem] p-6 pl-12">
+                <span class="absolute left-[14px] top-8 h-4 w-4 rounded-full border-4 border-lab-ink bg-white shadow-[0_0_18px_rgba(255,255,255,.55)]"></span>
+                <h3 class="text-2xl font-black tracking-[-0.03em] text-white">Higher National Diploma</h3>
+                <p class="mt-2 font-bold text-white/78">Bangladesh Institute of Information Technology</p>
+                <p class="mt-4 leading-7 text-white/65">Computer Technology foundation before the Sejong CSE path.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="border-y border-white/10 bg-white/[.018] px-4 py-20 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-7xl">
+          <div class="grid gap-8 lg:grid-cols-[.9fr_1.1fr] lg:items-start">
+            <div>
+              <p class="font-mono text-xs font-black uppercase tracking-[0.3em] text-lab-amber">Certifications</p>
+              <h2 class="mt-4 text-4xl font-black tracking-[-0.045em] text-white sm:text-5xl">Learning signal with a builder bias.</h2>
+              <p class="mt-5 text-lg leading-8 text-white/64">
+                The profile emphasizes a practical stack: build with Python, detect with vision models,
+                deploy on edge devices, and explain the work clearly.
+              </p>
+            </div>
+            <div class="grid gap-3 sm:grid-cols-2">
+              <div class="glass rounded-3xl p-5">
+                <p class="text-xl font-black text-white">Machine Learning for Beginners</p>
+                <p class="mt-3 text-sm leading-6 text-white/58">Foundation for model thinking and AI project structure.</p>
+              </div>
+              <div class="glass rounded-3xl p-5">
+                <p class="text-xl font-black text-white">Python Developer</p>
+                <p class="mt-3 text-sm leading-6 text-white/58">Core language for AI tooling and automation.</p>
+              </div>
+              <div class="glass rounded-3xl p-5">
+                <p class="text-xl font-black text-white">Agentic Workflows</p>
+                <p class="mt-3 text-sm leading-6 text-white/58">Structured multi-step work with AI assistants.</p>
+              </div>
+              <div class="glass rounded-3xl p-5">
+                <p class="text-xl font-black text-white">Prompt Engineering</p>
+                <p class="mt-3 text-sm leading-6 text-white/58">Turning rough ideas into implementable instructions.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="px-4 py-20 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-7xl rounded-[2rem] border border-white/10 bg-gradient-to-br from-lab-mint/16 via-white/[.045] to-lab-cyan/14 p-6 shadow-aura sm:p-10">
+          <div class="grid gap-8 lg:grid-cols-[1.1fr_.9fr] lg:items-center">
+            <div>
+              <p class="font-mono text-xs font-black uppercase tracking-[0.3em] text-lab-mint">Next collaboration</p>
+              <h2 class="mt-4 text-4xl font-black tracking-[-0.045em] text-white sm:text-6xl">Build something that sees, reasons, and works.</h2>
+              <p class="mt-5 max-w-2xl text-lg leading-8 text-white/66">
+                Open to collaborations on AI/ML projects, computer vision applications, and
+                innovative tech solutions.
+              </p>
+            </div>
+            <div class="flex flex-col gap-3 sm:flex-row lg:justify-end">
+              <a class="focus-ring inline-flex min-h-12 items-center justify-center rounded-full bg-lab-mint px-5 py-3 text-sm font-black text-lab-ink transition hover:-translate-y-0.5 hover:bg-white" href="mailto:morshedmdmonoarul@gmail.com">
+                morshedmdmonoarul@gmail.com
+              </a>
+              <a class="focus-ring inline-flex min-h-12 items-center justify-center rounded-full border border-white/12 bg-white/[.05] px-5 py-3 text-sm font-black text-white transition hover:-translate-y-0.5 hover:border-lab-cyan/60" href="https://www.linkedin.com/in/md-monoarul-morshed-6a07a6263" target="_blank" rel="noopener noreferrer">
+                LinkedIn
+              </a>
             </div>
           </div>
         </div>
       </section>
     </main>
 
-    <footer class="relative z-10 border-t border-zinc-900 py-8">
-      <div class="mx-auto flex max-w-7xl flex-col gap-3 px-4 text-sm text-zinc-500 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
-        <p>&copy; 2026 Morshed Md Monoarul. Engineered for GitHub Pages.</p>
-        <a
-          class="focus-ring rounded-lg px-3 py-2 transition hover:text-cyan-200"
-          href="https://github.com/MORSHEDMDMONOARUL/morshedmdmonoarul.github.io"
-          target="_blank"
-          rel="noopener noreferrer"
-          >source</a
-        >
+    <footer class="relative z-10 border-t border-white/10 px-4 py-8 sm:px-6 lg:px-8">
+      <div class="mx-auto flex max-w-7xl flex-col gap-3 text-sm font-bold text-white/42 sm:flex-row sm:items-center sm:justify-between">
+        <p>&copy; 2026 MD Monoarul Morshed. Neural Research Lab portfolio.</p>
+        <a class="focus-ring rounded-full px-3 py-2 transition hover:bg-white/10 hover:text-white" href="https://github.com/MORSHEDMDMONOARUL/morshedmdmonoarul.github.io" target="_blank" rel="noopener noreferrer">Source</a>
       </div>
     </footer>
   </body>
