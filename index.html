@@ -5,22 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Research portfolio of MD Monoarul Morshed, Sejong University CSE profile in Seoul, focused on AI, computer vision, edge AI, funded graduate study, and security-aware systems."
+      content="Neural Evidence Lab portfolio for MD Monoarul Morshed, a Sejong University CSE profile and AI & Computer Vision Engineer focused on edge AI, local AI systems, agentic workflows, and security-aware automation."
     />
     <meta name="theme-color" content="#080a0f" />
-    <meta property="og:title" content="MD Monoarul Morshed | AI, Computer Vision &amp; Graduate Research Portfolio" />
+    <meta property="og:title" content="MD Monoarul Morshed | Neural Evidence Lab" />
     <meta
       property="og:description"
-      content="Research portfolio for AI, computer vision, object detection, agentic workflows, Python systems, teaching work, and funded graduate study."
+      content="Research systems portfolio showing computer vision, edge AI, local AI workflows, teaching experience, and deployable AI prototypes."
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://morshedmdmonoarul.github.io/" />
     <meta property="og:image" content="https://github.com/MORSHEDMDMONOARUL.png?size=480" />
     <link
       rel="icon"
-      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%23080a0f'/%3E%3Cpath d='M16 42V22l16-8 16 8v20l-16 8-16-8Z' fill='none' stroke='%237dd3fc' stroke-width='4'/%3E%3Cpath d='M24 33h16M32 25v16' stroke='%23f6d365' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%23080a0f'/%3E%3Cpath d='M13 42V22l19-10 19 10v20L32 52 13 42Z' fill='none' stroke='%237dd3fc' stroke-width='4'/%3E%3Cpath d='M23 32h18M32 23v18' stroke='%23f6d365' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E"
     />
-    <title>MD Monoarul Morshed | AI, Computer Vision &amp; Graduate Research Portfolio</title>
+    <title>MD Monoarul Morshed | Neural Evidence Lab</title>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -32,40 +33,45 @@
               mono: ["JetBrains Mono", "ui-monospace", "SFMono-Regular", "monospace"],
             },
             colors: {
-              dossier: {
+              lab: {
                 ink: "#080a0f",
                 panel: "#11151d",
                 panel2: "#151b25",
-                line: "rgba(255,255,255,.14)",
                 paper: "#f4f0e7",
+                text: "#f8fafc",
+                muted: "#b6c2d2",
                 sky: "#7dd3fc",
                 mint: "#8ef0c6",
                 gold: "#f6d365",
                 coral: "#ff8d7a",
-                text: "#f8fafc",
               },
             },
             boxShadow: {
-              dossier: "0 24px 80px rgba(0, 0, 0, .38)",
-              skyglow: "0 0 0 1px rgba(125, 211, 252, .22), 0 22px 70px rgba(14, 165, 233, .12)",
+              panel: "0 26px 90px rgba(0, 0, 0, .36)",
+              cyan: "0 0 0 1px rgba(125, 211, 252, .22), 0 22px 70px rgba(14, 165, 233, .12)",
             },
             animation: {
-              blink: "blink 1.1s steps(2, start) infinite",
-              scanline: "scanline 7s linear infinite",
-              pulseDot: "pulseDot 2.4s ease-in-out infinite",
+              blink: "blink 1.08s steps(2, start) infinite",
+              scan: "scan 6.8s linear infinite",
+              pulseDot: "pulseDot 2.5s ease-in-out infinite",
+              drift: "drift 10s ease-in-out infinite",
             },
             keyframes: {
               blink: {
                 "0%, 45%": { opacity: "1" },
                 "46%, 100%": { opacity: "0" },
               },
-              scanline: {
-                from: { transform: "translateY(-20%)" },
-                to: { transform: "translateY(120%)" },
+              scan: {
+                from: { transform: "translateY(-24%)" },
+                to: { transform: "translateY(124%)" },
               },
               pulseDot: {
                 "0%, 100%": { transform: "scale(1)", opacity: ".72" },
-                "50%": { transform: "scale(1.35)", opacity: "1" },
+                "50%": { transform: "scale(1.32)", opacity: "1" },
+              },
+              drift: {
+                "0%, 100%": { transform: "translate3d(0, 0, 0)" },
+                "50%": { transform: "translate3d(0, -8px, 0)" },
               },
             },
           },
@@ -78,9 +84,14 @@
       href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Crimson+Pro:wght@500;600;700&family=JetBrains+Mono:wght@500;700&display=swap"
       rel="stylesheet"
     />
+
     <style>
       :root {
         color-scheme: dark;
+        --line: rgba(255, 255, 255, .14);
+        --line-soft: rgba(255, 255, 255, .09);
+        --surface: rgba(17, 21, 29, .76);
+        --surface-strong: rgba(21, 27, 37, .92);
       }
 
       * {
@@ -95,10 +106,11 @@
         min-height: 100dvh;
         overflow-x: hidden;
         background:
-          linear-gradient(135deg, rgba(125, 211, 252, .08) 0 1px, transparent 1px 36px),
-          linear-gradient(90deg, rgba(246, 211, 101, .055), transparent 28%, rgba(142, 240, 198, .055) 68%, transparent),
+          linear-gradient(115deg, rgba(125, 211, 252, .06), transparent 34%),
+          linear-gradient(250deg, transparent 18%, rgba(246, 211, 101, .05), transparent 44%),
           linear-gradient(180deg, #080a0f 0%, #10141d 48%, #080a0f 100%);
         color: #f8fafc;
+        text-rendering: geometricPrecision;
       }
 
       body::before {
@@ -110,8 +122,8 @@
         background-image:
           linear-gradient(rgba(255, 255, 255, .05) 1px, transparent 1px),
           linear-gradient(90deg, rgba(255, 255, 255, .045) 1px, transparent 1px);
-        background-size: 48px 48px;
-        mask-image: linear-gradient(to bottom, rgba(0, 0, 0, .82), rgba(0, 0, 0, .2), transparent);
+        background-size: 44px 44px;
+        mask-image: linear-gradient(to bottom, rgba(0, 0, 0, .82), rgba(0, 0, 0, .34), transparent 82%);
       }
 
       body::after {
@@ -120,32 +132,9 @@
         inset: 0;
         z-index: 0;
         pointer-events: none;
-        opacity: .11;
-        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.38'/%3E%3C/svg%3E");
+        opacity: .105;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.78' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.44'/%3E%3C/svg%3E");
         mix-blend-mode: soft-light;
-      }
-
-      .section-band {
-        border-top: 1px solid rgba(255, 255, 255, .1);
-        background: linear-gradient(180deg, rgba(255, 255, 255, .035), rgba(255, 255, 255, .012));
-      }
-
-      .panel {
-        border: 1px solid rgba(255, 255, 255, .14);
-        background: linear-gradient(180deg, rgba(255, 255, 255, .075), rgba(255, 255, 255, .032));
-        box-shadow: 0 24px 80px rgba(0, 0, 0, .28);
-      }
-
-      .project-card {
-        border: 1px solid rgba(255, 255, 255, .14);
-        background: linear-gradient(180deg, rgba(255, 255, 255, .07), rgba(255, 255, 255, .028));
-        transition: transform .22s ease, border-color .22s ease, background .22s ease;
-      }
-
-      .project-card:hover {
-        transform: translateY(-3px);
-        border-color: rgba(125, 211, 252, .58);
-        background: linear-gradient(180deg, rgba(125, 211, 252, .11), rgba(255, 255, 255, .035));
       }
 
       .focus-ring:focus-visible {
@@ -153,27 +142,91 @@
         outline-offset: 4px;
       }
 
-      .terminal-grid {
+      .glass-panel {
+        border: 1px solid var(--line);
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, .078), rgba(255, 255, 255, .03)),
+          var(--surface);
+        box-shadow: 0 26px 90px rgba(0, 0, 0, .32);
+        backdrop-filter: blur(18px);
+      }
+
+      .evidence-card {
+        border: 1px solid var(--line);
+        background: linear-gradient(180deg, rgba(255, 255, 255, .07), rgba(255, 255, 255, .025));
+        transition: transform .22s ease, border-color .22s ease, background .22s ease;
+      }
+
+      .evidence-card:hover {
+        transform: translateY(-3px);
+        border-color: rgba(125, 211, 252, .58);
+        background: linear-gradient(180deg, rgba(125, 211, 252, .11), rgba(255, 255, 255, .032));
+      }
+
+      .section-band {
+        border-top: 1px solid rgba(255, 255, 255, .1);
+        border-bottom: 1px solid rgba(255, 255, 255, .07);
+        background: linear-gradient(180deg, rgba(255, 255, 255, .036), rgba(255, 255, 255, .012));
+      }
+
+      .chip {
+        display: inline-flex;
+        min-height: 2.25rem;
+        align-items: center;
+        gap: .5rem;
+        border: 1px solid rgba(255, 255, 255, .13);
+        border-radius: .5rem;
+        background: rgba(255, 255, 255, .055);
+        padding: .45rem .7rem;
+        font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+        font-size: .78rem;
+        font-weight: 700;
+        color: rgba(248, 250, 252, .82);
+      }
+
+      .lab-grid {
+        position: relative;
+        overflow: hidden;
         background:
           linear-gradient(rgba(125, 211, 252, .13) 1px, transparent 1px),
           linear-gradient(90deg, rgba(125, 211, 252, .13) 1px, transparent 1px),
-          linear-gradient(180deg, rgba(8, 10, 15, .42), rgba(8, 10, 15, .84));
-        background-size: 34px 34px, 34px 34px, auto;
-        overflow: hidden;
+          linear-gradient(180deg, rgba(8, 10, 15, .22), rgba(8, 10, 15, .84));
+        background-size: 32px 32px, 32px 32px, auto;
       }
 
-      .terminal-grid::after {
+      .lab-grid::after {
         content: "";
         position: absolute;
         inset: 0;
-        background: linear-gradient(180deg, transparent, rgba(125, 211, 252, .16), transparent);
-        height: 38%;
-        animation: scanline 7s linear infinite;
+        height: 36%;
+        background: linear-gradient(180deg, transparent, rgba(125, 211, 252, .15), transparent);
+        animation: scan 6.8s linear infinite;
       }
 
-      .metric-row {
+      .vision-box {
+        position: absolute;
+        border: 1px solid rgba(142, 240, 198, .88);
+        box-shadow: 0 0 24px rgba(142, 240, 198, .14);
+      }
+
+      .vision-box::before {
+        content: attr(data-label);
+        position: absolute;
+        left: -1px;
+        top: -1.65rem;
+        border: 1px solid rgba(142, 240, 198, .55);
+        border-radius: .35rem .35rem 0 0;
+        background: rgba(8, 10, 15, .92);
+        padding: .18rem .45rem;
+        font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+        font-size: .64rem;
+        font-weight: 700;
+        color: #8ef0c6;
+      }
+
+      .signal-row {
         display: grid;
-        grid-template-columns: 108px 1fr;
+        grid-template-columns: 9rem 1fr;
         gap: 1rem;
       }
 
@@ -184,9 +237,9 @@
       .timeline-item::before {
         content: "";
         position: absolute;
-        left: .4rem;
-        top: 2.2rem;
-        bottom: -1.6rem;
+        left: .38rem;
+        top: 2.25rem;
+        bottom: -1.55rem;
         width: 1px;
         background: rgba(255, 255, 255, .16);
       }
@@ -195,10 +248,22 @@
         display: none;
       }
 
+      .small-caps {
+        font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+        font-size: .78rem;
+        font-weight: 700;
+        letter-spacing: 0;
+        text-transform: uppercase;
+      }
+
       @media (max-width: 640px) {
-        .metric-row {
+        .signal-row {
           grid-template-columns: 1fr;
           gap: .35rem;
+        }
+
+        .vision-box::before {
+          font-size: .58rem;
         }
       }
 
@@ -214,58 +279,76 @@
       }
     </style>
   </head>
-  <body class="font-sans antialiased" data-design="international-research-portfolio">
+
+  <body class="font-sans antialiased" data-design="neural-evidence-lab">
     <a
       href="#main"
-      class="focus-ring fixed left-4 top-4 z-50 -translate-y-24 rounded-lg bg-dossier-gold px-4 py-3 text-sm font-bold text-dossier-ink transition focus:translate-y-0"
+      class="focus-ring fixed left-4 top-4 z-50 -translate-y-24 rounded-lg bg-lab-gold px-4 py-3 text-sm font-bold text-lab-ink transition focus:translate-y-0"
       >Skip to content</a
     >
 
-    <header class="sticky top-0 z-40 border-b border-white/10 bg-dossier-ink/86 backdrop-blur-xl">
+    <header class="sticky top-0 z-40 border-b border-white/10 bg-lab-ink/88 backdrop-blur-xl">
       <nav class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8" aria-label="Primary navigation">
-        <a href="#main" class="focus-ring flex min-h-11 items-center gap-3 rounded-lg border border-white/12 bg-white/[.045] px-3 text-sm font-bold text-dossier-text">
-          <span class="h-2.5 w-2.5 rounded-full bg-dossier-sky shadow-[0_0_18px_rgba(125,211,252,.85)]"></span>
-          <span class="font-mono">morshed@vision-lab:~$</span>
-          <span class="inline-block h-4 w-2 bg-dossier-gold align-middle animate-blink" aria-hidden="true"></span>
+        <a href="#main" class="focus-ring flex min-h-11 items-center gap-3 rounded-lg border border-white/12 bg-white/[.045] px-3 text-sm font-bold text-lab-text">
+          <span class="h-2.5 w-2.5 rounded-full bg-lab-sky shadow-[0_0_18px_rgba(125,211,252,.85)]" aria-hidden="true"></span>
+          <span class="font-mono">morshed@neural-lab:~$</span>
+          <span class="inline-block h-4 w-2 bg-lab-gold align-middle animate-blink" aria-hidden="true"></span>
         </a>
         <div class="hidden items-center gap-1 text-sm font-bold text-white/68 lg:flex">
           <a class="focus-ring rounded-lg px-3 py-2 transition hover:bg-white/10 hover:text-white" href="#fit">Fit</a>
-          <a class="focus-ring rounded-lg px-3 py-2 transition hover:bg-white/10 hover:text-white" href="#dossier">Dossier</a>
-          <a class="focus-ring rounded-lg px-3 py-2 transition hover:bg-white/10 hover:text-white" href="#agenda">Agenda</a>
-          <a class="focus-ring rounded-lg px-3 py-2 transition hover:bg-white/10 hover:text-white" href="#timeline">Timeline</a>
+          <a class="focus-ring rounded-lg px-3 py-2 transition hover:bg-white/10 hover:text-white" href="#evidence">Evidence</a>
+          <a class="focus-ring rounded-lg px-3 py-2 transition hover:bg-white/10 hover:text-white" href="#case-study">Case</a>
+          <a class="focus-ring rounded-lg px-3 py-2 transition hover:bg-white/10 hover:text-white" href="#matrix">Matrix</a>
           <a class="focus-ring rounded-lg px-3 py-2 transition hover:bg-white/10 hover:text-white" href="#contact">Contact</a>
         </div>
       </nav>
     </header>
 
     <main id="main" class="relative z-10">
-      <section class="px-4 py-14 sm:px-6 sm:py-20 lg:px-8">
-        <div class="mx-auto grid max-w-7xl items-center gap-8 lg:grid-cols-[1.05fr_.95fr]">
+      <section class="px-4 pb-10 pt-8 sm:px-6 sm:pb-14 sm:pt-20 lg:px-8">
+        <div class="mx-auto grid max-w-7xl items-center gap-8 lg:grid-cols-[1.02fr_.98fr]">
           <div>
-            <div class="inline-flex max-w-full items-center gap-3 rounded-lg border border-dossier-mint/34 bg-dossier-mint/10 px-4 py-2 text-sm font-bold text-dossier-mint shadow-skyglow">
+            <div class="inline-flex max-w-full items-center gap-3 rounded-lg border border-lab-mint/34 bg-lab-mint/10 px-4 py-2 text-sm font-bold text-lab-mint shadow-cyan">
               <span class="relative flex h-3 w-3" aria-hidden="true">
-                <span class="absolute inline-flex h-full w-full rounded-full bg-dossier-mint opacity-60 animate-pulseDot"></span>
-                <span class="relative inline-flex h-3 w-3 rounded-full bg-dossier-mint"></span>
+                <span class="absolute inline-flex h-full w-full rounded-full bg-lab-mint opacity-60 animate-pulseDot"></span>
+                <span class="relative inline-flex h-3 w-3 rounded-full bg-lab-mint"></span>
               </span>
-              Open for funded graduate study, AI research, and computer vision collaboration
+              Neural Evidence Lab
             </div>
 
-            <p class="mt-7 font-mono text-sm font-bold uppercase text-dossier-sky">
-              International Research Portfolio
-            </p>
-            <h1 class="mt-4 max-w-5xl font-serif text-5xl font-bold leading-none text-dossier-text sm:text-6xl lg:text-7xl">
-              AI &amp; Computer Vision Systems Builder
+            <p class="mt-6 small-caps text-lab-sky sm:mt-7">AI &amp; Computer Vision Engineer</p>
+            <h1 class="mt-4 max-w-5xl font-serif text-4xl font-bold leading-none text-lab-text sm:text-6xl lg:text-7xl">
+              MD Monoarul Morshed
             </h1>
-            <p class="mt-6 max-w-3xl text-xl font-bold leading-8 text-white">
-              MD Monoarul Morshed builds practical AI systems that connect computer vision, edge devices, agentic workflows, and secure software engineering.
+            <p class="mt-5 max-w-3xl text-lg font-bold leading-8 text-white sm:mt-6 sm:text-xl">
+              Building practical, secure, and efficient intelligent systems across computer vision, edge devices, local AI environments, and security-aware automation.
             </p>
-            <p class="mt-5 max-w-3xl text-base leading-8 text-white/70 sm:text-lg">
-              This portfolio is shaped for graduate programs, European research groups, and research supervisors: fast evidence, clear academic fit, and project dossiers that show how I turn research ideas into working systems.
+            <p class="mt-4 max-w-3xl text-base leading-8 text-lab-muted sm:mt-5 sm:text-lg">
+              Sejong University CSE profile in Seoul, Teaching Assistant for Advanced Programming Applications, and builder of applied AI tools that connect models, devices, and research-grade engineering discipline.
             </p>
 
-            <div class="mt-8 flex flex-wrap gap-3" aria-label="Primary actions">
+            <div class="mt-7 flex flex-wrap gap-3" aria-label="Primary actions">
               <a
-                class="focus-ring inline-flex min-h-12 items-center justify-center gap-3 rounded-lg bg-dossier-sky px-5 py-3 text-sm font-bold text-dossier-ink shadow-skyglow transition hover:-translate-y-0.5 hover:bg-white"
+                class="focus-ring inline-flex min-h-12 items-center justify-center gap-3 rounded-lg bg-lab-sky px-5 py-3 text-sm font-bold text-lab-ink shadow-cyan transition hover:-translate-y-0.5 hover:bg-white"
+                href="#evidence"
+              >
+                <svg aria-hidden="true" viewBox="0 0 24 24" class="h-4 w-4 fill-none stroke-current stroke-2">
+                  <path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                View Research Work
+              </a>
+              <a
+                class="focus-ring inline-flex min-h-12 items-center justify-center gap-3 rounded-lg border border-white/14 bg-white/[.055] px-5 py-3 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:border-lab-mint/70"
+                href="mailto:morshedmdmonoarul@gmail.com?subject=Prospective%20Research%20Collaboration%3A%20Computer%20Vision%2C%20Edge%20AI%2C%20and%20Agentic%20Systems"
+              >
+                <svg aria-hidden="true" viewBox="0 0 24 24" class="h-4 w-4 fill-none stroke-current stroke-2">
+                  <path d="M4 5h16v14H4z" stroke-linejoin="round" />
+                  <path d="m4 7 8 6 8-6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                Contact for Collaboration
+              </a>
+              <a
+                class="focus-ring inline-flex min-h-12 items-center justify-center gap-3 rounded-lg border border-white/14 bg-white/[.055] px-5 py-3 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:border-lab-gold/70"
                 href="https://github.com/MORSHEDMDMONOARUL/ExamShield"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -274,83 +357,64 @@
                   <path d="M12 3 5 6v5c0 4.8 3 8.7 7 10 4-1.3 7-5.2 7-10V6l-7-3Z" stroke-linecap="round" stroke-linejoin="round" />
                   <path d="m9 12 2 2 4-5" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
-                View ExamShield
+                ExamShield
               </a>
-              <a
-                class="focus-ring inline-flex min-h-12 items-center justify-center gap-3 rounded-lg border border-white/14 bg-white/[.055] px-5 py-3 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:border-dossier-gold/70"
-                href="mailto:morshedmdmonoarul@gmail.com?subject=CV%20request%20for%20funded%20graduate%20or%20research%20opportunity"
-              >
-                <svg aria-hidden="true" viewBox="0 0 24 24" class="h-4 w-4 fill-none stroke-current stroke-2">
-                  <path d="M4 5h16v14H4z" stroke-linejoin="round" />
-                  <path d="m4 7 8 6 8-6" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-                Request CV
-              </a>
-              <a
-                class="focus-ring inline-flex min-h-12 items-center justify-center gap-3 rounded-lg border border-white/14 bg-white/[.055] px-5 py-3 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:border-dossier-mint/70"
-                href="https://www.linkedin.com/in/md-monoarul-morshed-6a07a6263"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <svg aria-hidden="true" viewBox="0 0 24 24" class="h-4 w-4 fill-none stroke-current stroke-2">
-                  <path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-                LinkedIn
-              </a>
+            </div>
+
+            <p class="mt-5 max-w-3xl text-base leading-8 text-white/70">
+              Open to research supervision conversations, applied AI collaboration, and funded graduate research opportunities. I am exploring thesis-based or research-oriented graduate opportunities in Europe-based research environments and internationally.
+            </p>
+
+            <div class="mt-8 flex flex-wrap gap-2" aria-label="Research signal tags">
+              <span class="chip">YOLOv8</span>
+              <span class="chip">ESP32</span>
+              <span class="chip">NVIDIA NIM</span>
+              <span class="chip">Python</span>
+              <span class="chip">Edge AI</span>
+              <span class="chip">Computer Vision</span>
             </div>
           </div>
 
-          <aside class="panel terminal-grid relative rounded-lg p-5" aria-label="Research profile dossier summary">
+          <aside class="glass-panel lab-grid relative rounded-lg p-5" aria-label="Neural research cockpit summary">
             <div class="relative z-10 grid gap-5">
               <div class="flex items-center justify-between gap-4 border-b border-white/12 pb-4">
                 <div>
-                  <p class="font-mono text-xs font-bold uppercase text-white/58">Profile file</p>
-                  <h2 class="mt-1 font-serif text-3xl font-bold text-white">Morshed Md Monoarul</h2>
+                  <p class="small-caps text-white/58">Research systems cockpit</p>
+                  <h2 class="mt-1 font-serif text-3xl font-bold text-white">Applied AI systems profile</h2>
                 </div>
+                <span class="rounded-lg border border-lab-mint/30 bg-lab-mint/10 px-3 py-2 font-mono text-xs font-bold text-lab-mint">evidence-led</span>
+              </div>
+
+              <div class="relative min-h-[310px] overflow-hidden rounded-lg border border-white/12 bg-lab-ink/72 p-4 shadow-panel">
+                <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-lab-sky/70 to-transparent" aria-hidden="true"></div>
                 <img
-                  src="https://github.com/MORSHEDMDMONOARUL.png?size=240"
-                  width="96"
-                  height="96"
+                  src="https://github.com/MORSHEDMDMONOARUL.png?size=360"
+                  width="360"
+                  height="360"
                   alt="GitHub avatar for MD Monoarul Morshed"
-                  class="h-20 w-20 rounded-lg border border-white/16 bg-white/10 object-cover"
+                  class="mx-auto h-56 w-56 rounded-lg border border-white/14 bg-white/10 object-cover opacity-95"
                 />
-              </div>
-
-              <div class="grid gap-4 text-sm">
-                <div class="metric-row">
-                  <p class="font-mono font-bold text-dossier-gold">Location</p>
-                  <p class="text-white/78">Seoul, South Korea</p>
-                </div>
-                <div class="metric-row">
-                  <p class="font-mono font-bold text-dossier-gold">Academic base</p>
-                  <p class="text-white/78">Computer Science &amp; Engineering, Sejong University, March 2022 - March 2026</p>
-                </div>
-                <div class="metric-row">
-                  <p class="font-mono font-bold text-dossier-gold">Teaching</p>
-                  <p class="text-white/78">Teaching Assistant for Advanced Programming Applications, March 2026 - Present</p>
-                </div>
-                <div class="metric-row">
-                  <p class="font-mono font-bold text-dossier-gold">Research pull</p>
-                  <p class="text-white/78">Computer Vision, object detection, agentic AI, edge AI, IoT sensing, secure AI systems</p>
+                <span class="vision-box left-[14%] top-[28%] h-24 w-24" data-label="profile" aria-hidden="true"></span>
+                <span class="vision-box bottom-[18%] right-[13%] h-16 w-28 border-lab-gold/80" data-label="research-fit" aria-hidden="true"></span>
+                <div class="mt-4 grid gap-2 font-mono text-xs text-white/74">
+                  <p><span class="text-lab-sky">focus.cv</span> = YOLOv8 + OpenCV + object detection</p>
+                  <p><span class="text-lab-mint">edge.signal</span> = ESP32 + Raspberry Pi deployment thinking</p>
+                  <p><span class="text-lab-gold">workflow.ai</span> = NVIDIA NIM + local fallback tooling</p>
                 </div>
               </div>
 
-              <div class="grid grid-cols-2 gap-3 sm:grid-cols-4">
-                <div class="rounded-lg border border-white/12 bg-dossier-ink/70 p-3">
-                  <p class="font-mono text-xs text-white/55">Primary</p>
-                  <p class="mt-1 font-bold text-dossier-sky">Python</p>
+              <div class="grid gap-3 text-sm">
+                <div class="signal-row">
+                  <p class="font-mono font-bold text-lab-gold">Academic base</p>
+                  <p class="text-white/78">Computer Science &amp; Engineering, Sejong University, Seoul</p>
                 </div>
-                <div class="rounded-lg border border-white/12 bg-dossier-ink/70 p-3">
-                  <p class="font-mono text-xs text-white/55">Vision</p>
-                  <p class="mt-1 font-bold text-dossier-mint">YOLOv8</p>
+                <div class="signal-row">
+                  <p class="font-mono font-bold text-lab-gold">Teaching</p>
+                  <p class="text-white/78">Teaching Assistant, Advanced Programming Applications, March 2026 - Present</p>
                 </div>
-                <div class="rounded-lg border border-white/12 bg-dossier-ink/70 p-3">
-                  <p class="font-mono text-xs text-white/55">Edge</p>
-                  <p class="mt-1 font-bold text-dossier-gold">ESP32</p>
-                </div>
-                <div class="rounded-lg border border-white/12 bg-dossier-ink/70 p-3">
-                  <p class="font-mono text-xs text-white/55">Systems</p>
-                  <p class="mt-1 font-bold text-dossier-coral">Security</p>
+                <div class="signal-row">
+                  <p class="font-mono font-bold text-lab-gold">Direction</p>
+                  <p class="text-white/78">Trustworthy computer vision, edge/local AI, agentic workflows, secure intelligent systems</p>
                 </div>
               </div>
             </div>
@@ -358,56 +422,85 @@
         </div>
       </section>
 
-      <section id="fit" class="section-band px-4 py-16 sm:px-6 lg:px-8">
-        <div class="mx-auto max-w-7xl">
-          <div class="grid gap-8 lg:grid-cols-[.8fr_1.2fr]">
-            <div>
-              <p class="font-mono text-sm font-bold uppercase text-dossier-sky">Graduate Funding &amp; Research Fit</p>
-              <h2 class="mt-3 font-serif text-4xl font-bold text-white sm:text-5xl">Built for research groups that value working systems.</h2>
-              <p class="mt-5 leading-8 text-white/68">
-                I am looking for European research programs and international labs where computer vision, trustworthy AI, edge intelligence, and secure deployment meet real-world constraints.
-              </p>
+      <section class="px-4 pb-12 sm:px-6 lg:px-8" aria-label="Credibility signals">
+        <div class="mx-auto max-w-7xl border-y border-white/10 py-5">
+          <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-6">
+            <div class="min-h-20 rounded-lg border border-white/10 bg-white/[.035] p-4">
+              <p class="small-caps text-white/48">Location</p>
+              <p class="mt-2 font-bold text-white">Seoul, South Korea</p>
             </div>
-
-            <div class="grid gap-4 md:grid-cols-2">
-              <article class="project-card rounded-lg p-5">
-                <h3 class="text-xl font-bold text-white">Research Readiness</h3>
-                <p class="mt-3 leading-7 text-white/68">
-                  ExamShield shows applied AI research habits: dataset-driven object detection, confidence thresholds, risk scoring, and deployment modes from single camera to 16-camera monitoring.
-                </p>
-              </article>
-              <article class="project-card rounded-lg p-5">
-                <h3 class="text-xl font-bold text-white">Teaching Signal</h3>
-                <p class="mt-3 leading-7 text-white/68">
-                  As a Teaching Assistant, I support programming practice, debugging, and student mentoring. That experience matters in graduate labs where communication and reproducibility count.
-                </p>
-              </article>
-              <article class="project-card rounded-lg p-5">
-                <h3 class="text-xl font-bold text-white">Engineering Maturity</h3>
-                <p class="mt-3 leading-7 text-white/68">
-                  My projects span Python backends, Flask dashboards, Java systems, PHP inventory workflows, SQLite, MySQL, GitHub documentation, and local deployment constraints.
-                </p>
-              </article>
-              <article class="project-card rounded-lg p-5">
-                <h3 class="text-xl font-bold text-white">International Research Direction</h3>
-                <p class="mt-3 leading-7 text-white/68">
-                  I want to grow toward trustworthy computer vision, local AI environments, NPU layer offloading, agentic multi-agent workflows, and threat-aware AI systems.
-                </p>
-              </article>
+            <div class="min-h-20 rounded-lg border border-white/10 bg-white/[.035] p-4">
+              <p class="small-caps text-white/48">University</p>
+              <p class="mt-2 font-bold text-white">Sejong CSE</p>
+            </div>
+            <div class="min-h-20 rounded-lg border border-white/10 bg-white/[.035] p-4">
+              <p class="small-caps text-white/48">Academic role</p>
+              <p class="mt-2 font-bold text-white">Teaching Assistant</p>
+            </div>
+            <div class="min-h-20 rounded-lg border border-white/10 bg-white/[.035] p-4">
+              <p class="small-caps text-white/48">Vision</p>
+              <p class="mt-2 font-bold text-white">Object Detection</p>
+            </div>
+            <div class="min-h-20 rounded-lg border border-white/10 bg-white/[.035] p-4">
+              <p class="small-caps text-white/48">AI systems</p>
+              <p class="mt-2 font-bold text-white">Agentic Workflows</p>
+            </div>
+            <div class="min-h-20 rounded-lg border border-white/10 bg-white/[.035] p-4">
+              <p class="small-caps text-white/48">Core language</p>
+              <p class="mt-2 font-bold text-white">Python</p>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="dossier" class="px-4 py-16 sm:px-6 lg:px-8">
+      <section id="fit" class="section-band px-4 py-16 sm:px-6 lg:px-8">
+        <div class="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[.8fr_1.2fr]">
+          <div>
+            <p class="small-caps text-lab-sky">Research Fit</p>
+            <h2 class="mt-3 font-serif text-4xl font-bold text-white sm:text-5xl">A profile for labs building reliable AI systems.</h2>
+            <p class="mt-5 leading-8 text-lab-muted">
+              My work sits at the intersection of computer vision, local AI, edge devices, and security-aware automation. I am especially interested in groups working on efficient inference, monitored environments, trustworthy AI systems, and deployable research prototypes.
+            </p>
+          </div>
+
+          <div class="grid gap-4 md:grid-cols-3">
+            <article class="evidence-card rounded-lg p-5">
+              <p class="small-caps text-lab-sky">01 / Vision</p>
+              <h3 class="mt-4 text-xl font-bold text-white">Trustworthy computer vision</h3>
+              <p class="mt-3 leading-7 text-white/66">
+                Applied object detection work focused on monitoring contexts, alert design, and reducing noisy signals through careful system decisions.
+              </p>
+            </article>
+            <article class="evidence-card rounded-lg p-5">
+              <p class="small-caps text-lab-mint">02 / Edge</p>
+              <h3 class="mt-4 text-xl font-bold text-white">Local and edge AI</h3>
+              <p class="mt-3 leading-7 text-white/66">
+                Interest in local model environments, NPU layer offloading, Raspberry Pi deployment, and inference closer to constrained devices.
+              </p>
+            </article>
+            <article class="evidence-card rounded-lg p-5">
+              <p class="small-caps text-lab-gold">03 / Systems</p>
+              <h3 class="mt-4 text-xl font-bold text-white">Security-aware automation</h3>
+              <p class="mt-3 leading-7 text-white/66">
+                Engineering practice shaped by server operations, threat-aware thinking, and software that keeps logs, states, and failure modes visible.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="evidence" class="px-4 py-16 sm:px-6 lg:px-8">
         <div class="mx-auto max-w-7xl">
           <div class="flex flex-col justify-between gap-5 md:flex-row md:items-end">
             <div>
-              <p class="font-mono text-sm font-bold uppercase text-dossier-gold">Evidence Dossier</p>
-              <h2 class="mt-3 font-serif text-4xl font-bold text-white sm:text-5xl">Projects with proof, not just labels.</h2>
+              <p class="small-caps text-lab-gold">Technical Evidence</p>
+              <h2 class="mt-3 font-serif text-4xl font-bold text-white sm:text-5xl">Selected systems with proof trails.</h2>
+              <p class="mt-5 max-w-3xl leading-8 text-lab-muted">
+                Each project is presented as evidence: problem domain, technical method, engineering contribution, and a public artifact to inspect.
+              </p>
             </div>
             <a
-              class="focus-ring inline-flex min-h-11 items-center justify-center gap-2 rounded-lg border border-white/14 bg-white/[.05] px-4 py-2 text-sm font-bold text-white transition hover:border-dossier-sky/70"
+              class="focus-ring inline-flex min-h-11 items-center justify-center gap-2 rounded-lg border border-white/14 bg-white/[.05] px-4 py-2 text-sm font-bold text-white transition hover:border-lab-sky/70"
               href="https://github.com/MORSHEDMDMONOARUL"
               target="_blank"
               rel="noopener noreferrer"
@@ -415,124 +508,219 @@
               <svg aria-hidden="true" viewBox="0 0 24 24" class="h-4 w-4 fill-none stroke-current stroke-2">
                 <path d="M7 7h10v10M7 17 17 7" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
-              Full GitHub Profile
+              Explore GitHub
             </a>
           </div>
 
           <div class="mt-10 grid gap-5 lg:grid-cols-2">
-            <a class="project-card focus-ring rounded-lg p-6" href="https://github.com/MORSHEDMDMONOARUL/ExamShield" target="_blank" rel="noopener noreferrer">
-              <div class="flex items-start justify-between gap-4">
+            <a class="evidence-card focus-ring rounded-lg p-6" href="https://github.com/MORSHEDMDMONOARUL/ExamShield" target="_blank" rel="noopener noreferrer">
+              <div class="flex items-start justify-between gap-4 border-b border-white/10 pb-5">
                 <div>
-                  <p class="font-mono text-xs font-bold uppercase text-dossier-sky">Flagship AI/CV system</p>
+                  <p class="small-caps text-lab-sky">Flagship AI/CV prototype</p>
                   <h3 class="mt-2 font-serif text-3xl font-bold text-white">ExamShield</h3>
                 </div>
-                <span class="rounded-lg border border-dossier-mint/30 bg-dossier-mint/10 px-3 py-1 text-xs font-bold text-dossier-mint">MIT</span>
+                <span class="rounded-lg border border-lab-mint/30 bg-lab-mint/10 px-3 py-1 text-xs font-bold text-lab-mint">YOLOv8</span>
               </div>
-              <p class="mt-4 leading-8 text-white/70">
-                AI-powered exam proctoring system with YOLOv8, OpenCV, ESP32 BLE and WiFi monitoring, multi-student tracking, GPU acceleration options, cooldown alerting, CSV logs, and session reports.
+              <p class="mt-5 leading-8 text-white/70">
+                A multi-camera AI proctoring prototype using YOLOv8, OpenCV, ESP32 signaling, Flask dashboards, session reports, and deployment thinking for Raspberry Pi and local monitoring setups.
               </p>
-              <div class="mt-5 grid gap-3 sm:grid-cols-3">
-                <div class="rounded-lg border border-white/12 bg-dossier-ink/58 p-3">
-                  <p class="font-mono text-xs text-white/55">Detection</p>
-                  <p class="mt-1 font-bold text-white">phones, earphones, smartwatches</p>
+              <dl class="mt-5 grid gap-3 text-sm sm:grid-cols-3">
+                <div class="border-l border-lab-sky/45 pl-3">
+                  <dt class="font-mono text-xs text-white/52">Problem</dt>
+                  <dd class="mt-1 font-bold text-white">exam integrity monitoring</dd>
                 </div>
-                <div class="rounded-lg border border-white/12 bg-dossier-ink/58 p-3">
-                  <p class="font-mono text-xs text-white/55">Scale</p>
-                  <p class="mt-1 font-bold text-white">single, 4, and 16 cameras</p>
+                <div class="border-l border-lab-mint/45 pl-3">
+                  <dt class="font-mono text-xs text-white/52">Method</dt>
+                  <dd class="mt-1 font-bold text-white">object detection + risk alerts</dd>
                 </div>
-                <div class="rounded-lg border border-white/12 bg-dossier-ink/58 p-3">
-                  <p class="font-mono text-xs text-white/55">Research lens</p>
-                  <p class="mt-1 font-bold text-white">trustworthy monitoring</p>
+                <div class="border-l border-lab-gold/45 pl-3">
+                  <dt class="font-mono text-xs text-white/52">Scale path</dt>
+                  <dd class="mt-1 font-bold text-white">single, 4, and 16 cameras</dd>
                 </div>
-              </div>
+              </dl>
             </a>
 
-            <a class="project-card focus-ring rounded-lg p-6" href="https://github.com/MORSHEDMDMONOARUL/Prompt-Studio" target="_blank" rel="noopener noreferrer">
-              <div class="flex items-start justify-between gap-4">
+            <a class="evidence-card focus-ring rounded-lg p-6" href="https://github.com/MORSHEDMDMONOARUL/Prompt-Studio" target="_blank" rel="noopener noreferrer">
+              <div class="flex items-start justify-between gap-4 border-b border-white/10 pb-5">
                 <div>
-                  <p class="font-mono text-xs font-bold uppercase text-dossier-gold">Agentic workflow tool</p>
+                  <p class="small-caps text-lab-gold">Agentic AI workflow tool</p>
                   <h3 class="mt-2 font-serif text-3xl font-bold text-white">Prompt-Studio</h3>
                 </div>
-                <span class="rounded-lg border border-dossier-gold/30 bg-dossier-gold/10 px-3 py-1 text-xs font-bold text-dossier-gold">Python</span>
+                <span class="rounded-lg border border-lab-gold/30 bg-lab-gold/10 px-3 py-1 text-xs font-bold text-lab-gold">NVIDIA NIM</span>
               </div>
-              <p class="mt-4 leading-8 text-white/70">
-                Lightweight local prompt optimization engine that converts rough project ideas into implementation-ready build specifications with NVIDIA NIM Chat Completions, local fallback, quality scoring, token savings, browser history, and Markdown export.
+              <p class="mt-5 leading-8 text-white/70">
+                Local prompt optimization tool that turns rough project ideas into implementation-ready build specifications, with quality scoring, token savings, browser history, Markdown export, and local fallback behavior.
               </p>
               <div class="mt-5 flex flex-wrap gap-2">
-                <span class="rounded-lg bg-white/[.07] px-3 py-2 text-sm text-white/76">NVIDIA NIM</span>
-                <span class="rounded-lg bg-white/[.07] px-3 py-2 text-sm text-white/76">Python HTTP server</span>
-                <span class="rounded-lg bg-white/[.07] px-3 py-2 text-sm text-white/76">Vanilla JS</span>
-                <span class="rounded-lg bg-white/[.07] px-3 py-2 text-sm text-white/76">prompt quality analysis</span>
+                <span class="chip">Python HTTP server</span>
+                <span class="chip">Vanilla JS</span>
+                <span class="chip">prompt scoring</span>
               </div>
             </a>
 
-            <a class="project-card focus-ring rounded-lg p-6" href="https://github.com/MORSHEDMDMONOARUL/PDF_Quiz_Generator" target="_blank" rel="noopener noreferrer">
-              <div class="grid gap-5 md:grid-cols-[1fr_180px]">
+            <a class="evidence-card focus-ring rounded-lg p-6" href="https://github.com/MORSHEDMDMONOARUL/PDF_Quiz_Generator" target="_blank" rel="noopener noreferrer">
+              <div class="grid gap-5 md:grid-cols-[1fr_210px]">
                 <div>
-                  <p class="font-mono text-xs font-bold uppercase text-dossier-mint">Learning AI application</p>
+                  <p class="small-caps text-lab-mint">Learning AI application</p>
                   <h3 class="mt-2 font-serif text-3xl font-bold text-white">PDF Quiz Generator</h3>
                   <p class="mt-4 leading-8 text-white/70">
                     Flask application for extracting, summarizing, generating questions from PDFs, and supporting interactive document chat for students and professionals.
                   </p>
                 </div>
-                <img
-                  src="https://raw.githubusercontent.com/MORSHEDMDMONOARUL/PDF_Quiz_Generator/main/img.png"
-                  width="360"
-                  height="240"
-                  loading="lazy"
-                  alt="PDF Quiz Generator interface screenshot from the public GitHub repository"
-                  class="h-36 w-full rounded-lg border border-white/12 bg-white/[.08] object-cover"
-                />
+                <div class="rounded-lg border border-white/12 bg-lab-ink/70 p-4" aria-label="PDF Quiz Generator processing flow">
+                  <div class="grid gap-3 font-mono text-xs font-bold text-white/78">
+                    <span class="rounded-lg border border-lab-mint/35 bg-lab-mint/10 px-3 py-2 text-lab-mint">PDF input</span>
+                    <span class="rounded-lg border border-lab-sky/35 bg-lab-sky/10 px-3 py-2 text-lab-sky">extract + summarize</span>
+                    <span class="rounded-lg border border-lab-gold/35 bg-lab-gold/10 px-3 py-2 text-lab-gold">quiz + chat output</span>
+                  </div>
+                </div>
               </div>
             </a>
 
             <div class="grid gap-5 sm:grid-cols-2">
-              <a class="project-card focus-ring rounded-lg p-6" href="https://github.com/MORSHEDMDMONOARUL/SJ_MART" target="_blank" rel="noopener noreferrer">
-                <p class="font-mono text-xs font-bold uppercase text-dossier-coral">Web operations</p>
+              <a class="evidence-card focus-ring rounded-lg p-6" href="https://github.com/MORSHEDMDMONOARUL/SJ_MART" target="_blank" rel="noopener noreferrer">
+                <p class="small-caps text-lab-coral">Web operations</p>
                 <h3 class="mt-2 font-serif text-3xl font-bold text-white">SJ MART</h3>
-                <p class="mt-4 leading-7 text-white/70">PHP inventory management system for products, categories, customers, orders, authentication, and dashboard-style operations.</p>
+                <p class="mt-4 leading-7 text-white/70">
+                  PHP inventory management system covering products, categories, customers, orders, authentication, and dashboard operations.
+                </p>
               </a>
-              <a class="project-card focus-ring rounded-lg p-6" href="https://github.com/MORSHEDMDMONOARUL/SJ_MART_MORSHED" target="_blank" rel="noopener noreferrer">
-                <p class="font-mono text-xs font-bold uppercase text-dossier-sky">Desktop systems</p>
+              <a class="evidence-card focus-ring rounded-lg p-6" href="https://github.com/MORSHEDMDMONOARUL/SJ_MART_MORSHED" target="_blank" rel="noopener noreferrer">
+                <p class="small-caps text-lab-sky">Desktop systems</p>
                 <h3 class="mt-2 font-serif text-3xl font-bold text-white">SJ MART Java</h3>
-                <p class="mt-4 leading-7 text-white/70">Java Swing and SQLite inventory system covering product, category, sales, and local data management for small businesses.</p>
+                <p class="mt-4 leading-7 text-white/70">
+                  Java Swing and SQLite inventory system for product, category, sales, and local business data management.
+                </p>
               </a>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="agenda" class="section-band px-4 py-16 sm:px-6 lg:px-8">
+      <section id="case-study" class="section-band px-4 py-16 sm:px-6 lg:px-8">
+        <div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[.92fr_1.08fr]">
+          <div>
+            <p class="small-caps text-lab-sky">ExamShield Case Study</p>
+            <h2 class="mt-3 font-serif text-4xl font-bold text-white sm:text-5xl">A flagship prototype for applied computer vision.</h2>
+            <p class="mt-5 leading-8 text-lab-muted">
+              ExamShield is the clearest proof of my research engineering direction: a deployable prototype that connects computer vision, IoT signals, monitoring interfaces, and security-aware design.
+            </p>
+            <a
+              class="focus-ring mt-7 inline-flex min-h-11 items-center justify-center gap-2 rounded-lg border border-lab-sky/45 bg-lab-sky/10 px-4 py-2 text-sm font-bold text-lab-sky transition hover:bg-lab-sky hover:text-lab-ink"
+              href="https://github.com/MORSHEDMDMONOARUL/ExamShield"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg aria-hidden="true" viewBox="0 0 24 24" class="h-4 w-4 fill-none stroke-current stroke-2">
+                <path d="M7 7h10v10M7 17 17 7" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              Inspect repository
+            </a>
+          </div>
+
+          <div class="glass-panel rounded-lg p-6">
+            <div class="grid gap-6">
+              <div class="border-b border-white/10 pb-5">
+                <p class="small-caps text-lab-gold">Problem domain</p>
+                <p class="mt-3 leading-8 text-white/74">
+                  Exploring practical AI-assisted approaches to exam monitoring and academic integrity, with attention to real-time feedback, alert control, and evidence trails.
+                </p>
+              </div>
+              <div class="border-b border-white/10 pb-5">
+                <p class="small-caps text-lab-mint">Method</p>
+                <p class="mt-3 leading-8 text-white/74">
+                  Combines YOLOv8 detection, OpenCV processing, ESP32 BLE and WiFi device signaling, cooldown alerting, CSV logs, and session reports.
+                </p>
+              </div>
+              <div class="border-b border-white/10 pb-5">
+                <p class="small-caps text-lab-sky">Deployment path</p>
+                <p class="mt-3 leading-8 text-white/74">
+                  Designed around local monitoring constraints, GPU acceleration options, Raspberry Pi thinking, Roboflow-assisted dataset work, and layouts from single camera to 16-camera sessions.
+                </p>
+              </div>
+              <div>
+                <p class="small-caps text-lab-coral">Research value</p>
+                <p class="mt-3 leading-8 text-white/74">
+                  The project creates a strong bridge toward trustworthy monitoring, false-positive control, multi-camera coordination, privacy-aware design, and interpretable alerting.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="matrix" class="px-4 py-16 sm:px-6 lg:px-8">
         <div class="mx-auto max-w-7xl">
           <div class="max-w-3xl">
-            <p class="font-mono text-sm font-bold uppercase text-dossier-mint">Research Agenda</p>
-            <h2 class="mt-3 font-serif text-4xl font-bold text-white sm:text-5xl">Where I want to contribute in a research lab.</h2>
-            <p class="mt-5 leading-8 text-white/68">
-              My next step is to connect practical engineering with deeper research questions around perception, local AI systems, and trustworthy deployment.
+            <p class="small-caps text-lab-mint">Capability Matrix</p>
+            <h2 class="mt-3 font-serif text-4xl font-bold text-white sm:text-5xl">What I can bring into a research team.</h2>
+            <p class="mt-5 leading-8 text-lab-muted">
+              The matrix below is intentionally practical. It shows how my academic role, project history, and engineering tools can support research work.
             </p>
           </div>
 
-          <div class="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-            <article class="project-card rounded-lg p-5">
-              <p class="font-mono text-sm font-bold text-dossier-sky">01</p>
-              <h3 class="mt-4 text-xl font-bold text-white">Computer Vision for academic integrity</h3>
-              <p class="mt-3 leading-7 text-white/66">Object detection, multi-camera coordination, behavioral signals, false-positive control, and interpretable alerting.</p>
+          <div class="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-5">
+            <article class="evidence-card rounded-lg p-5">
+              <p class="small-caps text-lab-sky">Vision Systems</p>
+              <h3 class="mt-4 text-xl font-bold text-white">Detection pipelines</h3>
+              <p class="mt-3 leading-7 text-white/66">YOLOv8, OpenCV, object detection, multi-camera layouts, Roboflow, and monitoring interfaces.</p>
             </article>
-            <article class="project-card rounded-lg p-5">
-              <p class="font-mono text-sm font-bold text-dossier-gold">02</p>
-              <h3 class="mt-4 text-xl font-bold text-white">Local and edge AI architectures</h3>
-              <p class="mt-3 leading-7 text-white/66">Raspberry Pi deployment, ESP32 sensing, local inference constraints, NPU layer offloading, and practical system optimization.</p>
+            <article class="evidence-card rounded-lg p-5">
+              <p class="small-caps text-lab-gold">AI Workflows</p>
+              <h3 class="mt-4 text-xl font-bold text-white">Specification tools</h3>
+              <p class="mt-3 leading-7 text-white/66">Prompt engineering, Agentic Workflows, NVIDIA NIM, local fallback design, scoring, and Markdown export.</p>
             </article>
-            <article class="project-card rounded-lg p-5">
-              <p class="font-mono text-sm font-bold text-dossier-mint">03</p>
-              <h3 class="mt-4 text-xl font-bold text-white">Agentic engineering workflows</h3>
-              <p class="mt-3 leading-7 text-white/66">Multi-agent planning, prompt evaluation, compact specification generation, and reproducible AI-assisted development processes.</p>
+            <article class="evidence-card rounded-lg p-5">
+              <p class="small-caps text-lab-mint">Edge &amp; IoT</p>
+              <h3 class="mt-4 text-xl font-bold text-white">Device-aware AI</h3>
+              <p class="mt-3 leading-7 text-white/66">ESP32, Raspberry Pi direction, local inference constraints, NPU layer offloading interest, and sensor-aware systems.</p>
             </article>
-            <article class="project-card rounded-lg p-5">
-              <p class="font-mono text-sm font-bold text-dossier-coral">04</p>
-              <h3 class="mt-4 text-xl font-bold text-white">Security and threat modeling</h3>
-              <p class="mt-3 leading-7 text-white/66">Threat-aware AI systems, privacy-aware monitoring, adversarial misuse cases, secure deployment paths, and responsible automation.</p>
+            <article class="evidence-card rounded-lg p-5">
+              <p class="small-caps text-lab-coral">Backend &amp; Data</p>
+              <h3 class="mt-4 text-xl font-bold text-white">Operational software</h3>
+              <p class="mt-3 leading-7 text-white/66">Python, Flask, Java, PHP, SQLite, MySQL, dashboards, logs, authentication, and inventory workflows.</p>
             </article>
+            <article class="evidence-card rounded-lg p-5 md:col-span-2 xl:col-span-1">
+              <p class="small-caps text-lab-paper">Teaching &amp; Communication</p>
+              <h3 class="mt-4 text-xl font-bold text-white">Academic support</h3>
+              <p class="mt-3 leading-7 text-white/66">Teaching Assistant experience, debugging support, programming practice, and clear technical explanation.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="agenda" class="section-band px-4 py-16 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-7xl">
+          <div class="grid gap-8 lg:grid-cols-[.8fr_1.2fr]">
+            <div>
+              <p class="small-caps text-lab-gold">Research Agenda</p>
+              <h2 class="mt-3 font-serif text-4xl font-bold text-white sm:text-5xl">Questions I want to work on next.</h2>
+              <p class="mt-5 leading-8 text-lab-muted">
+                The next step is to turn working prototypes into deeper research questions around perception, efficient local AI, and trustworthy deployment.
+              </p>
+            </div>
+            <div class="grid gap-4 md:grid-cols-2">
+              <article class="evidence-card rounded-lg p-5">
+                <p class="small-caps text-lab-sky">01</p>
+                <h3 class="mt-4 text-xl font-bold text-white">Computer vision for monitored environments</h3>
+                <p class="mt-3 leading-7 text-white/66">Study object detection, multi-camera coordination, interpretable alerts, and false-positive control in constrained spaces.</p>
+              </article>
+              <article class="evidence-card rounded-lg p-5">
+                <p class="small-caps text-lab-mint">02</p>
+                <h3 class="mt-4 text-xl font-bold text-white">Efficient local inference</h3>
+                <p class="mt-3 leading-7 text-white/66">Explore model deployment closer to the device through local AI environments, edge hardware, and NPU-oriented optimization.</p>
+              </article>
+              <article class="evidence-card rounded-lg p-5">
+                <p class="small-caps text-lab-gold">03</p>
+                <h3 class="mt-4 text-xl font-bold text-white">Agentic engineering workflows</h3>
+                <p class="mt-3 leading-7 text-white/66">Improve how multi-agent planning, prompt evaluation, and reproducible specifications support faster research prototyping.</p>
+              </article>
+              <article class="evidence-card rounded-lg p-5">
+                <p class="small-caps text-lab-coral">04</p>
+                <h3 class="mt-4 text-xl font-bold text-white">Threat-aware AI systems</h3>
+                <p class="mt-3 leading-7 text-white/66">Connect cybersecurity thinking with AI deployment: misuse cases, privacy boundaries, secure logs, and responsible automation.</p>
+              </article>
+            </div>
           </div>
         </div>
       </section>
@@ -540,47 +728,47 @@
       <section id="timeline" class="px-4 py-16 sm:px-6 lg:px-8">
         <div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[.86fr_1.14fr]">
           <div>
-            <p class="font-mono text-sm font-bold uppercase text-dossier-gold">Academic Timeline</p>
-            <h2 class="mt-3 font-serif text-4xl font-bold text-white sm:text-5xl">A CSE path with teaching and systems practice.</h2>
-            <p class="mt-5 leading-8 text-white/68">
-              The timeline below keeps research groups oriented: education, teaching, industry systems exposure, and technical growth.
+            <p class="small-caps text-lab-sky">Academic Timeline</p>
+            <h2 class="mt-3 font-serif text-4xl font-bold text-white sm:text-5xl">A CSE path shaped by teaching and systems work.</h2>
+            <p class="mt-5 leading-8 text-lab-muted">
+              This timeline keeps the academic story easy to evaluate: university training, teaching work, operational experience, and project growth.
             </p>
           </div>
 
           <div class="grid gap-6">
             <article class="timeline-item grid grid-cols-[24px_1fr] gap-4">
-              <span class="mt-1 h-3 w-3 rounded-full bg-dossier-mint shadow-[0_0_18px_rgba(142,240,198,.8)]"></span>
-              <div class="panel rounded-lg p-5">
-                <p class="font-mono text-sm font-bold text-dossier-mint">March 2026 - Present</p>
+              <span class="mt-1 h-3 w-3 rounded-full bg-lab-mint shadow-[0_0_18px_rgba(142,240,198,.8)]" aria-hidden="true"></span>
+              <div class="glass-panel rounded-lg p-5">
+                <p class="font-mono text-sm font-bold text-lab-mint">March 2026 - Present</p>
                 <h3 class="mt-2 text-2xl font-bold text-white">Teaching Assistant</h3>
-                <p class="mt-2 font-bold text-dossier-sky">Sejong University, Advanced Programming Applications</p>
+                <p class="mt-2 font-bold text-lab-sky">Sejong University, Advanced Programming Applications</p>
                 <p class="mt-3 leading-7 text-white/68">Supports course delivery, programming practice, debugging feedback, and student learning around applied software development.</p>
               </div>
             </article>
             <article class="timeline-item grid grid-cols-[24px_1fr] gap-4">
-              <span class="mt-1 h-3 w-3 rounded-full bg-dossier-sky shadow-[0_0_18px_rgba(125,211,252,.8)]"></span>
-              <div class="panel rounded-lg p-5">
-                <p class="font-mono text-sm font-bold text-dossier-sky">March 2022 - March 2026</p>
+              <span class="mt-1 h-3 w-3 rounded-full bg-lab-sky shadow-[0_0_18px_rgba(125,211,252,.8)]" aria-hidden="true"></span>
+              <div class="glass-panel rounded-lg p-5">
+                <p class="font-mono text-sm font-bold text-lab-sky">March 2022 - March 2026</p>
                 <h3 class="mt-2 text-2xl font-bold text-white">Computer Science &amp; Engineering</h3>
-                <p class="mt-2 font-bold text-dossier-gold">Sejong University</p>
+                <p class="mt-2 font-bold text-lab-gold">Sejong University</p>
                 <p class="mt-3 leading-7 text-white/68">Focused on Artificial Intelligence, Computer Vision, Machine Learning, Python development, and applied systems projects.</p>
               </div>
             </article>
             <article class="timeline-item grid grid-cols-[24px_1fr] gap-4">
-              <span class="mt-1 h-3 w-3 rounded-full bg-dossier-coral shadow-[0_0_18px_rgba(255,141,122,.75)]"></span>
-              <div class="panel rounded-lg p-5">
-                <p class="font-mono text-sm font-bold text-dossier-coral">May 2019 - July 2021</p>
+              <span class="mt-1 h-3 w-3 rounded-full bg-lab-coral shadow-[0_0_18px_rgba(255,141,122,.75)]" aria-hidden="true"></span>
+              <div class="glass-panel rounded-lg p-5">
+                <p class="font-mono text-sm font-bold text-lab-coral">May 2019 - July 2021</p>
                 <h3 class="mt-2 text-2xl font-bold text-white">Server Manager</h3>
-                <p class="mt-2 font-bold text-dossier-mint">Tampaco Foils Ltd., Dhaka, Bangladesh</p>
+                <p class="mt-2 font-bold text-lab-mint">Tampaco Foils Ltd., Dhaka, Bangladesh</p>
                 <p class="mt-3 leading-7 text-white/68">Built early operational discipline through server management, reliability responsibilities, and production-facing technical support.</p>
               </div>
             </article>
             <article class="timeline-item grid grid-cols-[24px_1fr] gap-4">
-              <span class="mt-1 h-3 w-3 rounded-full bg-dossier-gold shadow-[0_0_18px_rgba(246,211,101,.75)]"></span>
-              <div class="panel rounded-lg p-5">
-                <p class="font-mono text-sm font-bold text-dossier-gold">Foundation</p>
+              <span class="mt-1 h-3 w-3 rounded-full bg-lab-gold shadow-[0_0_18px_rgba(246,211,101,.75)]" aria-hidden="true"></span>
+              <div class="glass-panel rounded-lg p-5">
+                <p class="font-mono text-sm font-bold text-lab-gold">Foundation</p>
                 <h3 class="mt-2 text-2xl font-bold text-white">Higher National Diploma</h3>
-                <p class="mt-2 font-bold text-dossier-sky">Bangladesh Institute of Information Technology</p>
+                <p class="mt-2 font-bold text-lab-sky">Bangladesh Institute of Information Technology</p>
                 <p class="mt-3 leading-7 text-white/68">Computer Technology foundation before the Sejong CSE path, with later certifications in Python, machine learning, prompt engineering, and agentic workflows.</p>
               </div>
             </article>
@@ -588,50 +776,31 @@
         </div>
       </section>
 
-      <section class="section-band px-4 py-16 sm:px-6 lg:px-8">
+      <section id="contact" class="section-band px-4 py-16 sm:px-6 lg:px-8">
         <div class="mx-auto max-w-7xl">
-          <div class="grid gap-6 lg:grid-cols-3">
+          <div class="grid gap-8 lg:grid-cols-[1.1fr_.9fr]">
             <div>
-              <p class="font-mono text-sm font-bold uppercase text-dossier-sky">Technical Stack</p>
-              <h2 class="mt-3 font-serif text-4xl font-bold text-white">Tools I can bring into a research team.</h2>
-            </div>
-            <div class="project-card rounded-lg p-5">
-              <h3 class="text-xl font-bold text-white">AI and Vision</h3>
-              <p class="mt-3 leading-7 text-white/68">Python, YOLOv8, OpenCV, TensorFlow, Computer Vision, object detection, Roboflow, Google Colab, Raspberry Pi edge deployment.</p>
-            </div>
-            <div class="project-card rounded-lg p-5">
-              <h3 class="text-xl font-bold text-white">Software Systems</h3>
-              <p class="mt-3 leading-7 text-white/68">Flask, Java, JavaScript, HTML/CSS, PHP, SQLite, MySQL, Git/GitHub, VS Code, ESP32, local development environments.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="contact" class="px-4 py-16 sm:px-6 lg:px-8">
-        <div class="mx-auto max-w-7xl">
-          <div class="panel grid gap-8 rounded-lg p-6 sm:p-8 lg:grid-cols-[1.1fr_.9fr]">
-            <div>
-              <p class="font-mono text-sm font-bold uppercase text-dossier-mint">Contact</p>
-              <h2 class="mt-3 font-serif text-4xl font-bold text-white sm:text-5xl">Connect for Research, Graduate Study, or Collaboration</h2>
-              <p class="mt-5 max-w-3xl leading-8 text-white/68">
-                I am preparing for funded graduate opportunities and research-aligned work connected to European research programs. The strongest fit is a lab or program where computer vision, edge AI, and secure intelligent systems are treated as serious engineering research.
+              <p class="small-caps text-lab-mint">Contact</p>
+              <h2 class="mt-3 font-serif text-4xl font-bold text-white sm:text-5xl">Connect for research, graduate study, or collaboration.</h2>
+              <p class="mt-5 max-w-3xl leading-8 text-lab-muted">
+                I am interested in discussing research alignment, supervision opportunities, collaborative AI systems projects, and funded graduate research opportunities connected to computer vision, edge AI, local AI systems, and security-aware automation.
               </p>
             </div>
             <div class="grid content-start gap-3">
-              <a class="focus-ring inline-flex min-h-12 items-center justify-center gap-3 rounded-lg bg-dossier-gold px-5 py-3 text-sm font-bold text-dossier-ink transition hover:-translate-y-0.5 hover:bg-white" href="mailto:morshedmdmonoarul@gmail.com">
+              <a class="focus-ring inline-flex min-h-12 items-center justify-center gap-3 rounded-lg bg-lab-gold px-5 py-3 text-sm font-bold text-lab-ink transition hover:-translate-y-0.5 hover:bg-white" href="mailto:morshedmdmonoarul@gmail.com?subject=Graduate%20Research%20Inquiry%3A%20Applied%20AI%20Systems%20and%20Computer%20Vision">
                 <svg aria-hidden="true" viewBox="0 0 24 24" class="h-4 w-4 fill-none stroke-current stroke-2">
                   <path d="M4 5h16v14H4z" stroke-linejoin="round" />
                   <path d="m4 7 8 6 8-6" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
                 morshedmdmonoarul@gmail.com
               </a>
-              <a class="focus-ring inline-flex min-h-12 items-center justify-center gap-3 rounded-lg border border-white/14 bg-white/[.055] px-5 py-3 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:border-dossier-sky/70" href="https://github.com/MORSHEDMDMONOARUL" target="_blank" rel="noopener noreferrer">
+              <a class="focus-ring inline-flex min-h-12 items-center justify-center gap-3 rounded-lg border border-white/14 bg-white/[.055] px-5 py-3 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:border-lab-sky/70" href="https://github.com/MORSHEDMDMONOARUL" target="_blank" rel="noopener noreferrer">
                 <svg aria-hidden="true" viewBox="0 0 24 24" class="h-4 w-4 fill-none stroke-current stroke-2">
                   <path d="M12 2a10 10 0 0 0-3 19c.5.1.7-.2.7-.5v-2c-2.8.6-3.4-1.2-3.4-1.2-.5-1.1-1.1-1.4-1.1-1.4-.9-.6.1-.6.1-.6 1 0 1.6 1.1 1.6 1.1.9 1.5 2.4 1.1 3 .8.1-.7.4-1.1.7-1.4-2.2-.3-4.5-1.1-4.5-4.9 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.8 1a9.3 9.3 0 0 1 5 0c1.9-1.3 2.8-1 2.8-1 .5 1.4.2 2.4.1 2.7.7.7 1 1.6 1 2.7 0 3.8-2.3 4.6-4.5 4.9.4.3.8 1 .8 2v3c0 .3.2.6.8.5A10 10 0 0 0 12 2Z" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
                 GitHub
               </a>
-              <a class="focus-ring inline-flex min-h-12 items-center justify-center gap-3 rounded-lg border border-white/14 bg-white/[.055] px-5 py-3 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:border-dossier-mint/70" href="https://www.linkedin.com/in/md-monoarul-morshed-6a07a6263" target="_blank" rel="noopener noreferrer">
+              <a class="focus-ring inline-flex min-h-12 items-center justify-center gap-3 rounded-lg border border-white/14 bg-white/[.055] px-5 py-3 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:border-lab-mint/70" href="https://www.linkedin.com/in/md-monoarul-morshed-6a07a6263" target="_blank" rel="noopener noreferrer">
                 <svg aria-hidden="true" viewBox="0 0 24 24" class="h-4 w-4 fill-none stroke-current stroke-2">
                   <path d="M7 10v8M7 6v.01M11 18v-8M11 14c0-2.2 1.2-4 3.5-4 2 0 2.5 1.4 2.5 3.2V18" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
@@ -645,7 +814,7 @@
 
     <footer class="relative z-10 border-t border-white/10 px-4 py-8 text-sm text-white/52 sm:px-6 lg:px-8">
       <div class="mx-auto flex max-w-7xl flex-col justify-between gap-3 md:flex-row md:items-center">
-        <p>&copy; 2026 MD Monoarul Morshed. Research Portfolio for AI, Computer Vision &amp; Graduate Study.</p>
+        <p>&copy; 2026 MD Monoarul Morshed. Neural Evidence Lab for AI, Computer Vision &amp; Graduate Research.</p>
         <a class="focus-ring rounded-lg px-3 py-2 transition hover:bg-white/10 hover:text-white" href="https://github.com/MORSHEDMDMONOARUL/morshedmdmonoarul.github.io" target="_blank" rel="noopener noreferrer">Source</a>
       </div>
     </footer>

@@ -3,16 +3,35 @@ const path = require("node:path");
 
 const htmlPath = path.join(__dirname, "..", "index.html");
 const html = fs.readFileSync(htmlPath, "utf8");
+const visibleText = html
+  .replace(/<script\b[\s\S]*?<\/script>/gi, " ")
+  .replace(/<style\b[\s\S]*?<\/style>/gi, " ")
+  .replace(/<[^>]+>/g, " ")
+  .replace(/&amp;/g, "&")
+  .replace(/\s+/g, " ");
 
 const requiredSnippets = [
-  "data-design=\"international-research-portfolio\"",
-  "International Research Portfolio",
-  "AI &amp; Computer Vision Systems Builder",
-  "Graduate Funding &amp; Research Fit",
-  "funded graduate study",
-  "European research programs",
+  "data-design=\"neural-evidence-lab\"",
+  "Neural Evidence Lab",
+  "AI &amp; Computer Vision Engineer",
+  "practical, secure, and efficient intelligent systems",
+  "Sejong University CSE profile",
+  "View Research Work",
+  "Contact for Collaboration",
+  "Research Fit",
+  "Technical Evidence",
+  "ExamShield Case Study",
+  "Capability Matrix",
+  "Vision Systems",
+  "AI Workflows",
+  "Edge &amp; IoT",
+  "Teaching &amp; Communication",
+  "funded graduate research opportunities",
+  "thesis-based or research-oriented graduate opportunities",
+  "Europe-based research environments",
+  "Research systems cockpit",
+  "evidence-led",
   "Research Agenda",
-  "Evidence Dossier",
   "Academic Timeline",
   "Teaching Assistant",
   "Sejong University",
@@ -41,6 +60,8 @@ const forbiddenIdentitySnippets = [
   "morshed@eu-research",
   "EU candidate",
   "EU Candidate",
+  "European candidate",
+  "Europe candidate",
   "Candidate file",
   "Candidate research dossier",
   "EU Research Direction",
@@ -49,7 +70,12 @@ const forbiddenIdentitySnippets = [
   "scholarship committees",
   "scholarship reviewers",
   "graduate reviewers",
+  "CSE student",
+  "CS Student",
+  "Live research cockpit",
+  ">online</span>",
 ];
+const forbiddenDesignSnippets = ["gradient orb", "bokeh", "rounded-full blur-", "emoji"];
 
 const failures = [];
 
@@ -66,8 +92,14 @@ for (const snippet of forbiddenSnippets) {
 }
 
 for (const snippet of forbiddenIdentitySnippets) {
-  if (html.includes(snippet)) {
+  if (html.toLowerCase().includes(snippet.toLowerCase()) || visibleText.toLowerCase().includes(snippet.toLowerCase())) {
     failures.push(`Found direct candidate positioning: ${snippet}`);
+  }
+}
+
+for (const snippet of forbiddenDesignSnippets) {
+  if (html.toLowerCase().includes(snippet.toLowerCase())) {
+    failures.push(`Found forbidden design artifact: ${snippet}`);
   }
 }
 
@@ -82,6 +114,15 @@ if (!/<main\b[^>]*id="main"/i.test(html)) {
 
 if (!/prefers-reduced-motion/.test(html)) {
   failures.push("Missing reduced motion CSS guard");
+}
+
+const visionBoxes = html.match(/<span class="vision-box[^>]+>/g) || [];
+if (visionBoxes.length < 2 || visionBoxes.some((box) => !/aria-hidden="true"/.test(box))) {
+  failures.push("Decorative vision-box overlays must be hidden from assistive tech");
+}
+
+if (/[😀-🙏🌀-🗿🚀-🛿]/u.test(visibleText)) {
+  failures.push("Visible emoji are not allowed in the professional UI");
 }
 
 if (failures.length > 0) {
